@@ -150,7 +150,8 @@ transition: pop-slide
 | レイアウト | 用途 | props |
 |-----------|------|-------|
 | `cover` | タイトルページ | `background`, `subtitle` |
-| `section` | セクション区切り | `color`: pink/yellow/cyan/purple/candy |
+| `section` | セクション区切り | `color`: pink/yellow/cyan/green/candy |
+| `statement` | 一言スライド（白抜き文字） | `color`: dark/green/pink/coral/cyan/warm/light |
 | `default` | 通常コンテンツ | - |
 | `two-cols` | 2カラム | `::right::` スロット |
 | `center` | 中央寄せ | - |
@@ -259,7 +260,7 @@ Rough Notationによるテキストハイライト：
 <PopCard color="pink" icon="💖" title="タイトル">
   カードの内容テキスト
 </PopCard>
-<!-- color: pink / yellow / mint / purple / cyan -->
+<!-- color: pink / yellow / mint / green / cyan -->
 
 <!-- グラデーション見出し -->
 <GradientHeading gradient="main" tag="h2">テキスト</GradientHeading>
@@ -267,7 +268,7 @@ Rough Notationによるテキストハイライト：
 
 <!-- プログレスバー -->
 <ProgressBar label="ラベル" :value="85" color="pink" />
-<!-- color: main / warm / cool / pink / purple / candy -->
+<!-- color: main / warm / cool / pink / green / candy -->
 
 <!-- ステップリスト -->
 <StepList :steps="['ステップ1', 'ステップ2', 'ステップ3']" color="pink" />
@@ -293,7 +294,7 @@ Rough Notationによるテキストハイライト：
 <span class="text-hot-pink">ホットピンク</span>
 <span class="text-yellow">イエロー</span>
 <span class="text-cyan">シアン</span>
-<span class="text-purple">パープル</span>
+<span class="text-green">グリーン</span>
 <span class="text-orange">オレンジ</span>
 <span class="text-coral">コーラル</span>
 <span class="text-mint">ミント</span>
@@ -383,6 +384,7 @@ npx slidev --remote
 ### コンテンツ設計
 - **1スライド1メッセージ**: 情報を詰め込みすぎない
 - **キーワード中心**: 長文は避け、キーワードとビジュアルで伝える
+- **一言スライドを多用する**: 重要なメッセージや問いかけ、転換点には `statement` レイアウトで一言だけ大きく表示するスライドを挟む。聴衆の注意を引きつけ、プレゼンにリズムを生む。情報スライド2〜3枚ごとに1枚の一言スライドを入れるのが目安
 - **ストーリー構成**: 導入→問題提起→解決策→結論の流れを意識
 - **発表時間の目安**: 1スライドあたり1〜2分、20分なら12〜15枚程度
 
@@ -395,6 +397,7 @@ npx slidev --remote
 
 ### レイアウト活用
 - **cover**: 最初のスライドに必ず使用
+- **statement**: 一言で伝えたいメッセージに使用（白抜き文字で色付き背景）。問いかけ、結論、転換点に積極的に使う。colorプロップで雰囲気を変える（dark/green/pink/coral/cyan/warm/light）
 - **section**: 各セクションの区切りに使用（colorプロップで色を変える）
 - **fact**: インパクトのある数値データに使用
 - **quote**: 引用や名言に使用
@@ -402,7 +405,7 @@ npx slidev --remote
 - **end**: 最後のスライドに必ず使用
 
 ### デザインTips
-- `<PopCard>` で情報をカード化すると見やすい
+- `<PopCard>` で情報をカード化すると見やすい。**ただし、他のコンテンツ（リストやテキスト等）の下に配置すると見切れるため、スライドの主要コンテンツとして単独で使うか、スライド上部に配置すること**
 - `<ProgressBar>` でスキルや進捗を可視化
 - `<GradientHeading>` でセクションタイトルをより印象的に
 - `<StepList>` で手順やフローを明確に
