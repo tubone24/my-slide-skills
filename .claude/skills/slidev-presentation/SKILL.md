@@ -39,6 +39,9 @@ references/template/
 │   ├── StepList.vue      # ステップリスト
 │   ├── FloatingEmoji.vue # 装飾用フローティング絵文字
 │   └── PopTimeline.vue   # タイムライン表示
+├── composables/
+│   └── useSoundEffect.js # 効果音合成Composable（Web Audio API）
+├── global-top.vue        # 効果音トリガー（スライド遷移検知）
 └── global-bottom.vue     # グローバルプログレスバー＋ページ番号
 ```
 
@@ -253,6 +256,55 @@ Rough Notationによるテキストハイライト：
 <span v-mark.strike-through.red>取り消し線</span>
 ```
 
+#### スライド切り替え効果音
+
+スライド遷移時に効果音を鳴らす機能。Web Audio APIによる合成音をプリセットとして提供し、カスタム音声ファイルにも対応。
+
+**グローバル設定**（headmatter / 最初のスライドのフロントマター）:
+```yaml
+---
+soundEffects: true       # ON/OFF（デフォルト: false）
+soundVolume: 0.3         # 音量 0.0-1.0（デフォルト: 0.3）
+soundDefault: 'pop'      # デフォルト効果音（省略可）
+---
+```
+
+**スライド個別設定**:
+```yaml
+---
+sound: 'dramatic'        # プリセット名
+soundVolume: 0.5         # 個別音量（グローバル設定を上書き）
+sound: false             # このスライドだけ無効化
+---
+```
+
+**カスタムファイル再生**:
+```yaml
+---
+sound: 'custom'
+soundFile: '/sounds/my-effect.mp3'  # public/sounds/ に配置
+---
+```
+
+**プリセット一覧**:
+
+| プリセット名 | 効果 | 用途の例 |
+|-------------|------|---------|
+| `dramatic` | ジャーン（低音+和音） | タイトル、重要な発表、フィナーレ |
+| `pop` | ポップ（短いバウンス音） | 通常のスライド切り替え |
+| `whoosh` | シュッ（風切り音） | セクション遷移、場面転換 |
+| `chime` | チャイム（和音の連続） | 引用、良いニュース |
+| `boom` | ドーン（低音インパクト） | 数値インパクト、驚き |
+| `sparkle` | キラキラ（高音の連続） | まとめ、エンディング |
+| `click` | カチッ（短いクリック音） | 軽い切り替え |
+| `custom` | カスタムファイル再生 | `soundFile`と併用 |
+| `none` | 無音 | 効果音なし |
+
+**注意事項**:
+- `soundEffects: true` をheadmatterに設定しない限り、効果音は鳴らない（デフォルトOFF）
+- ブラウザのAutoplay Policy対策として、最初のクリック/キー操作後に音声が有効になる
+- PDFエクスポート時は効果音は無視される（SSR/エクスポート環境では動作しない）
+
 #### カスタムコンポーネント
 
 ```html
@@ -416,7 +468,7 @@ npx slidev --remote
 
 ## 重要な注意事項
 
-- テンプレートファイルをコピーする際は、styles/index.css, layouts/*, components/*, global-bottom.vue を必ずすべてコピーすること
+- テンプレートファイルをコピーする際は、styles/index.css, layouts/*, components/*, composables/*, global-bottom.vue, global-top.vue を必ずすべてコピーすること
 - フォントはGoogle Fontsから読み込まれる（Poppins, Zen Maru Gothic, Dela Gothic One）
 - 画像はpublic/ディレクトリに配置し、`/image.png` のパスで参照する
 - エクスポート時はPlaywright Chromiumが必要

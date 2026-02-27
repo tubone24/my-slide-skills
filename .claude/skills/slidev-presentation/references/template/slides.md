@@ -3,6 +3,9 @@ theme: none
 title: Pop Azusa テンプレートデモ
 author: Your Name
 transition: pop-fade
+soundEffects: true
+soundVolume: 0.3
+soundDefault: pop
 fonts:
   sans: Poppins
   local: Poppins, Zen Maru Gothic, Dela Gothic One
@@ -21,6 +24,7 @@ defaults:
 ---
 layout: default
 transition: pop-slide
+sound: chime
 ---
 
 # v-clickアニメーション
@@ -40,6 +44,7 @@ transition: pop-slide
 layout: section
 color: candy
 transition: pop-bounce
+sound: dramatic
 ---
 
 # セクションタイトル
@@ -136,6 +141,8 @@ transition: pop-slide
 ---
 layout: fact
 transition: pop-zoom
+sound: boom
+soundVolume: 0.2
 ---
 
 # 98.5%
@@ -193,6 +200,7 @@ transition: pop-swirl
 ---
 layout: end
 transition: pop-fade
+sound: sparkle
 ---
 
 # ありがとう 💖
