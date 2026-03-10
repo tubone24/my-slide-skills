@@ -1,5 +1,6 @@
 <template>
   <div class="slidev-layout two-cols-layout">
+    <OrganicDecorations />
     <div class="col-left">
       <slot name="default" />
     </div>

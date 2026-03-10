@@ -14,6 +14,8 @@
     "@slidev/theme-default": "latest"
   },
   "devDependencies": {
+    "@iconify-json/mdi": "^1.2.1",
+    "@iconify-json/ph": "^1.2.1",
     "playwright-chromium": "^1.49.0"
   }
 }

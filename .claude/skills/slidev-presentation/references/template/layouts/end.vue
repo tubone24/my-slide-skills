@@ -19,6 +19,7 @@ onMounted(() => {
 
 <template>
   <div class="slidev-layout end-layout">
+    <OrganicDecorations />
     <div class="end-gradient-bg" />
 
     <!-- Floating hearts -->
@@ -50,7 +51,7 @@ onMounted(() => {
   text-align: center;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #FFF0F5, #FFFDE7, #F0FFF4);
+  background: linear-gradient(135deg, #F5EDE6, #FAF6F2, #EFF8F3);
 }
 
 .end-layout::before {
@@ -60,13 +61,13 @@ onMounted(() => {
 .end-gradient-bg {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 107, 157, 0.1), transparent 70%);
+  background: radial-gradient(circle at 50% 50%, rgba(212, 145, 143, 0.08), transparent 70%);
   pointer-events: none;
 }
 
 .end-heart {
   position: absolute;
-  color: var(--pop-pink-light);
+  color: #E8B4B8;
   pointer-events: none;
   animation: heart-float 3s ease-in-out infinite;
 }

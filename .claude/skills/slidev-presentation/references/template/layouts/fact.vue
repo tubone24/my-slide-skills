@@ -9,6 +9,7 @@ onMounted(() => {
 
 <template>
   <div class="slidev-layout fact-layout">
+    <OrganicDecorations />
     <div class="fact-bg-shape fact-bg-shape-1" />
     <div class="fact-bg-shape fact-bg-shape-2" />
 

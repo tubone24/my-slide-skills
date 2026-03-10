@@ -13,7 +13,7 @@ defaults:
   transition: pop-fade
 ---
 
-# Pop Azusa ✨
+# Pop Azusa <ph-sparkle class="text-3xl text-yellow-400" />
 
 テンプレートデモンストレーション
 
@@ -33,10 +33,10 @@ sound: chime
 
 <v-clicks>
 
-- 💖 **ポップなバウンス** — 要素が弾むように表示
-- ✨ **スケールイン** — 拡大しながらフェードイン
-- 🌸 **スライドアニメーション** — 横からスライドで登場
-- 🎀 **ブラーエフェクト** — ぼかしから鮮明に
+- <ph-heart class="text-rose-400" /> **ポップなバウンス** — 要素が弾むように表示
+- <ph-sparkle class="text-yellow-400" /> **スケールイン** — 拡大しながらフェードイン
+- <ph-flower-lotus class="text-pink-300" /> **スライドアニメーション** — 横からスライドで登場
+- <ph-gift class="text-pink-400" /> **ブラーエフェクト** — ぼかしから鮮明に
 
 </v-clicks>
 
@@ -58,19 +58,19 @@ transition: pop-slide
 # カスタムアニメーションクラス
 
 <div v-click class="pop-bounce-up">
-  <p>🎪 <strong>pop-bounce-up</strong> — バウンスしながら上に登場</p>
+  <p><ph-tent class="text-lg" /> <strong>pop-bounce-up</strong> — バウンスしながら上に登場</p>
 </div>
 
 <div v-click class="pop-slide-right">
-  <p>➡️ <strong>pop-slide-right</strong> — 右からスライドイン</p>
+  <p><ph-arrow-right class="text-lg" /> <strong>pop-slide-right</strong> — 右からスライドイン</p>
 </div>
 
 <div v-click class="pop-spin-in">
-  <p>🌀 <strong>pop-spin-in</strong> — 回転しながら登場</p>
+  <p><ph-spiral class="text-lg" /> <strong>pop-spin-in</strong> — 回転しながら登場</p>
 </div>
 
 <div v-click class="pop-blur-zoom">
-  <p>🔮 <strong>pop-blur-zoom</strong> — ぼかし＋ズームイン</p>
+  <p><ph-eye class="text-lg" /> <strong>pop-blur-zoom</strong> — ぼかし＋ズームイン</p>
 </div>
 
 ---
@@ -86,7 +86,7 @@ transition: pop-fade
   class="pop-card pop-card-pink"
   style="margin-bottom: 1rem; padding: 1rem 1.5rem;"
 >
-  📦 左からスライドイン（v-motion）
+  <ph-package class="text-lg" /> 左からスライドイン（v-motion）
 </div>
 
 <div
@@ -96,7 +96,7 @@ transition: pop-fade
   class="pop-card pop-card-yellow"
   style="margin-bottom: 1rem; padding: 1rem 1.5rem;"
 >
-  🚀 下からバウンスイン（v-motion）
+  <ph-rocket-launch class="text-lg" /> 下からバウンスイン（v-motion）
 </div>
 
 <div
@@ -106,7 +106,7 @@ transition: pop-fade
   class="pop-card pop-card-mint"
   style="padding: 1rem 1.5rem;"
 >
-  🎯 右から回転しながら登場（v-motion）
+  <ph-crosshair class="text-lg" /> 右から回転しながら登場（v-motion）
 </div>
 
 ---
@@ -120,9 +120,9 @@ transition: pop-slide
 
 <v-clicks>
 
-- ✅ 柔軟なグリッドレイアウト
-- 🎨 カラフルなボーダー装飾
-- 📱 見やすい配置
+- <ph-check-circle class="text-green-500" /> 柔軟なグリッドレイアウト
+- <ph-palette class="text-pink-400" /> カラフルなボーダー装飾
+- <ph-device-mobile class="text-cyan-500" /> 見やすい配置
 
 </v-clicks>
 
@@ -130,11 +130,11 @@ transition: pop-slide
 
 ### 右カラム
 
-<PopCard v-click color="pink" icon="💖" title="ポップカード">
+<PopCard v-click color="pink" title="ポップカード">
   カスタムVueコンポーネントで<br>リッチな表現が可能
 </PopCard>
 
-<PopCard v-click color="mint" icon="🌿" title="ミントカード" style="margin-top: 1rem;">
+<PopCard v-click color="mint" title="ミントカード" style="margin-top: 1rem;">
   色違いのバリエーションも<br>自由に選べます
 </PopCard>
 
@@ -203,6 +203,6 @@ transition: pop-fade
 sound: sparkle
 ---
 
-# ありがとう 💖
+# ありがとう <ph-heart-fill class="text-3xl text-rose-400" />
 
 ご清聴ありがとうございました！

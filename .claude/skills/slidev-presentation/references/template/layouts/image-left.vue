@@ -6,6 +6,7 @@ defineProps({
 
 <template>
   <div class="slidev-layout image-left-layout">
+    <OrganicDecorations />
     <div class="image-side">
       <div class="image-frame">
         <img :src="image" alt="" />

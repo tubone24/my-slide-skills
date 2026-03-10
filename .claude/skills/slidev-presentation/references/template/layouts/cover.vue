@@ -60,7 +60,7 @@ onMounted(() => {
   justify-content: center;
   text-align: center;
   position: relative;
-  background: linear-gradient(135deg, #FFF0F5 0%, #FFF8F9 30%, #FFFDE7 70%, #F0FFF4 100%);
+  background: linear-gradient(135deg, #F5EDE6 0%, #FAF6F2 30%, #FFF8E7 70%, #EFF8F3 100%);
   padding: 3rem;
   height: 100%;
   min-height: 100%;
@@ -71,7 +71,7 @@ onMounted(() => {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(255, 107, 157, 0.15) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(212, 145, 143, 0.08) 1px, transparent 1px);
   background-size: 20px 20px;
   pointer-events: none;
 }
@@ -88,7 +88,7 @@ onMounted(() => {
 .cover-orb-1 {
   width: 300px;
   height: 300px;
-  background: var(--pop-pink);
+  background: #D4918F;
   top: -50px;
   right: -50px;
   animation: float 6s ease-in-out infinite;
@@ -97,7 +97,7 @@ onMounted(() => {
 .cover-orb-2 {
   width: 250px;
   height: 250px;
-  background: var(--pop-yellow);
+  background: #E8A68C;
   bottom: -30px;
   left: -30px;
   animation: float 5s ease-in-out infinite 1s;
@@ -106,7 +106,7 @@ onMounted(() => {
 .cover-orb-3 {
   width: 200px;
   height: 200px;
-  background: var(--pop-cyan);
+  background: #A8C5B8;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -116,18 +116,18 @@ onMounted(() => {
 /* Sparkles */
 .cover-sparkle {
   position: absolute;
-  background: var(--pop-yellow);
+  background: #E8B4B8;
   border-radius: 50%;
   pointer-events: none;
   animation: sparkle 3s ease-in-out infinite;
 }
 
 .cover-sparkle:nth-child(odd) {
-  background: var(--pop-pink-light);
+  background: #C5DDD2;
 }
 
 .cover-sparkle:nth-child(3n) {
-  background: var(--pop-cyan-light);
+  background: #E8A68C;
 }
 
 /* Content */
@@ -148,7 +148,7 @@ onMounted(() => {
 .cover-accent-bar {
   width: 80px;
   height: 5px;
-  background: var(--pop-gradient-main);
+  background: var(--pop-gradient-cool);
   border-radius: 3px;
   margin: 0 auto var(--pop-space-lg);
   animation: gradient-shift 3s ease infinite;

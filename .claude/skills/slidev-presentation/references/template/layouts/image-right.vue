@@ -6,6 +6,7 @@ defineProps({
 
 <template>
   <div class="slidev-layout image-right-layout">
+    <OrganicDecorations />
     <div class="content-side">
       <slot />
     </div>

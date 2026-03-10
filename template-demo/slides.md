@@ -1,23 +1,91 @@
 ---
 theme: none
-title: レイアウト全確認デモ
+title: 全レイアウト＆コンポーネント確認デモ
 author: Demo
 transition: pop-fade
 soundEffects: true
-soundVolume: 1
+soundVolume: 0.3
 soundDefault: pop
 fonts:
-  sans: Poppins
-  local: Poppins, Zen Maru Gothic, Dela Gothic One
+  sans: Zen Maru Gothic
+  local: Zen Maru Gothic, M PLUS Rounded 1c
 defaults:
   transition: pop-fade
 ---
 
-# 全レイアウト確認デモ ✨
+# 全レイアウト確認デモ
 
-11種類のレイアウト + 効果音プリセットをチェック
+18種類のレイアウト + コンポーネントをチェック
 
-<FloatingEmoji emojis="✨🌿🍀💚" :count="6" />
+---
+layout: toc
+transition: pop-slide
+sound: chime
+zoom: 0.9
+---
+
+# もくじ
+
+1. カバー & 基本
+2. セクション区切り
+3. ステートメント
+4. 2カラム & センター
+5. 画像レイアウト
+6. 円形画像レイアウト
+7. 数値 & 引用
+8. アイコングリッド
+9. 3カラム特徴
+10. 証言 & 連絡先
+11. コンポーネント
+12. エンド
+
+---
+layout: section
+color: pink
+transition: pop-bounce
+sound: whoosh
+---
+
+# セクション区切り
+
+5色のカラーバリエーション
+
+---
+layout: section
+color: yellow
+transition: pop-swirl
+sound: whoosh
+---
+
+# section（yellow）
+
+---
+layout: section
+color: cyan
+transition: pop-flip
+sound: pop
+---
+
+# section（cyan）
+
+---
+layout: section
+color: green
+transition: pop-bounce
+sound: boom
+soundVolume: 0.2
+---
+
+# section（green）
+
+---
+layout: section
+color: candy
+transition: pop-zoom
+sound: chime
+---
+
+# section（candy）
 
 ---
 layout: statement
@@ -28,7 +96,59 @@ sound: dramatic
 
 # まずはレイアウトを見ていこう
 
-🔊 効果音: **dramatic**（ジャーン）
+---
+layout: statement
+color: green
+transition: pop-slide
+sound: false
+---
+
+# シンプルに伝えよう
+
+---
+layout: statement
+color: pink
+transition: pop-slide
+sound: sparkle
+---
+
+# statement（pink）
+
+---
+layout: statement
+color: coral
+transition: pop-bounce
+sound: false
+---
+
+# 数字には力がある
+
+---
+layout: statement
+color: cyan
+transition: pop-slide
+sound: false
+---
+
+# statement（cyan）
+
+---
+layout: statement
+color: warm
+transition: pop-bounce
+sound: pop
+---
+
+# statement（warm）
+
+---
+layout: statement
+color: light
+transition: pop-fade
+sound: false
+---
+
+# statement（light）
 
 ---
 layout: default
@@ -40,13 +160,11 @@ sound: chime
 
 通常のコンテンツ表示に使うデフォルトレイアウト
 
-🔊 効果音: **chime**（チャイム）
-
 <v-clicks>
 
-- 💚 リストアイテムは `v-clicks` で段階表示
-- 🌿 **太字**テキストや *強調* も使える
-- 🍀 `インラインコード` の表示もチェック
+- <ph-check-circle class="text-lg" style="color: var(--pop-sage)" /> リストアイテムは `v-clicks` で段階表示
+- <ph-text-bolder class="text-lg" style="color: var(--pop-sage)" /> **太字**テキストや *強調* も使える
+- <ph-code class="text-lg" style="color: var(--pop-sage)" /> `インラインコード` の表示もチェック
 
 </v-clicks>
 
@@ -60,9 +178,7 @@ sound: pop
 
 コンテンツを中央に配置するシンプルなレイアウト
 
-🔊 効果音: **pop**（ポップ）
-
-テキストが中央寄せで表示されます
+<ph-crosshair class="text-4xl" style="color: var(--pop-rose)" />
 
 ---
 layout: two-cols
@@ -73,8 +189,6 @@ sound: sparkle
 # two-cols レイアウト
 
 左カラムにテキストを配置
-
-🔊 効果音: **sparkle**（キラキラ）
 
 <v-clicks>
 
@@ -88,24 +202,13 @@ sound: sparkle
 
 ### 右カラム
 
-<PopCard color="pink" icon="💖" title="ピンクカード">
+<PopCard color="pink" title="ピンクカード">
   左右の比較・対比に最適
 </PopCard>
 
-<PopCard color="mint" icon="🌿" title="ミントカード" style="margin-top: 1rem;">
+<PopCard color="mint" title="ミントカード" style="margin-top: 0.8rem;">
   色バリエーションも豊富
 </PopCard>
-
----
-layout: statement
-color: green
-transition: pop-zoom
-sound: whoosh
----
-
-# シンプルに伝えよう
-
-🔊 効果音: **whoosh**（シュッ）
 
 ---
 layout: image-right
@@ -114,17 +217,15 @@ transition: pop-slide
 sound: click
 ---
 
-# image-right レイアウト
+# image-right
 
-右側に画像を自動配置
-
-🔊 効果音: **click**（カチッ）
+右側に画像を自動配置（四角フレーム）
 
 <v-clicks>
 
-- 左側にテキストコンテンツ
-- 右側に画像を表示
-- URLでもローカルファイルでもOK
+- <ph-image class="text-lg" style="color: var(--pop-rose)" /> 左側にテキストコンテンツ
+- <ph-frame-corners class="text-lg" style="color: var(--pop-rose)" /> 右側に画像を表示
+- <ph-link class="text-lg" style="color: var(--pop-rose)" /> URLでもローカルファイルでもOK
 
 </v-clicks>
 
@@ -136,30 +237,48 @@ sound: boom
 soundVolume: 0.2
 ---
 
-# image-left レイアウト
+# image-left
 
-左側に画像を自動配置
-
-🔊 効果音: **boom**（ドーン / 音量0.2）
+左側に画像を自動配置（四角フレーム）
 
 <v-clicks>
 
-- 画像を左に配置したいとき
-- テキストは右側に表示
-- image-right の逆バージョン
+- <ph-arrow-left class="text-lg" style="color: var(--pop-rose)" /> 画像を左に配置
+- <ph-text-align-left class="text-lg" style="color: var(--pop-rose)" /> テキストは右側に表示
+- <ph-arrows-left-right class="text-lg" style="color: var(--pop-rose)" /> image-rightの逆
 
 </v-clicks>
 
 ---
-layout: statement
-color: coral
-transition: pop-bounce
-sound: false
+layout: image-circle-right
+image: https://images.unsplash.com/photo-1491013516836-7db643ee125a?w=600
+transition: pop-slide
+sound: pop
 ---
 
-# 数字には力がある
+# image-circle-right
 
-🔇 効果音: **無効**（`sound: false`）
+円形に切り抜かれた画像を右側に配置
+
+<v-clicks>
+
+- <ph-circle class="text-lg" style="color: var(--pop-rose)" /> ローズカラーのボーダー付き
+- <ph-user-circle class="text-lg" style="color: var(--pop-rose)" /> 人物写真に最適
+
+</v-clicks>
+
+---
+layout: image-circle-left
+image: https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600
+transition: pop-slide
+sound: pop
+---
+
+# image-circle-left
+
+円形画像が左側に配置されるレイアウト
+
+ポートレートや人物紹介に最適なデザイン。
 
 ---
 layout: fact
@@ -172,8 +291,6 @@ soundVolume: 0.5
 
 ユーザー満足度スコア
 
-🔊 効果音: **dramatic**（音量0.5）
-
 ---
 layout: quote
 author: Steve Jobs
@@ -184,129 +301,176 @@ sound: chime
 Stay hungry, stay foolish.
 
 ---
-layout: section
-color: pink
+layout: grid-icons
 transition: pop-bounce
 sound: sparkle
+zoom: 0.9
 ---
 
-# section（pink）
+# 活動内容
 
-セクション区切りのピンクバージョン
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem; margin-top: 1rem;">
 
-🔊 効果音: **sparkle**
+<div style="text-align: center;">
+<ph-cooking-pot class="text-3xl" style="color: var(--pop-rose)" />
 
----
-layout: section
-color: yellow
-transition: pop-swirl
-sound: whoosh
----
+### ワークショップ
 
-# section（yellow）
+<p class="text-sm">手作りおもちゃ作り、料理教室など</p>
+</div>
 
-セクション区切りのイエローバージョン
+<div style="text-align: center;">
+<ph-chat-circle-dots class="text-3xl" style="color: var(--pop-rose)" />
 
-🔊 効果音: **whoosh**
+### 子育て情報交換会
 
----
-layout: section
-color: cyan
-transition: pop-flip
-sound: pop
----
+<p class="text-sm">毎週のオンライン交流</p>
+</div>
 
-# section（cyan）
+<div style="text-align: center;">
+<ph-book-open class="text-3xl" style="color: var(--pop-rose)" />
 
-セクション区切りのシアンバージョン
+### 趣味グループ
 
-🔊 効果音: **pop**
+<p class="text-sm">読書会、手芸会など</p>
+</div>
 
----
-layout: section
-color: green
-transition: pop-bounce
-sound: boom
-soundVolume: 0.2
----
+<div style="text-align: center;">
+<ph-megaphone class="text-3xl" style="color: var(--pop-rose)" />
 
-# section（green）
+### ママ向けセミナー
 
-セクション区切りのグリーンバージョン
+<p class="text-sm">子育ての悩み解決、健康管理</p>
+</div>
 
-🔊 効果音: **boom**（音量0.2）
+</div>
 
 ---
-layout: section
-color: candy
+layout: three-features
 transition: pop-zoom
+sound: whoosh
+zoom: 0.85
+---
+
+# コミュニティーの特徴
+
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
+
+<div style="text-align: center;">
+<img src="https://images.unsplash.com/photo-1587654780291-39c9404d7dd0?w=300" style="width: 130px; height: 130px; object-fit: cover; border-radius: 50%; border: 3px solid var(--pop-rose-light); margin: 0 auto 0.8rem; display: block;" />
+
+<h3 class="text-sm" style="font-weight: 700;">経験豊富なママ講師の<br/>ワークショップ</h3>
+</div>
+
+<div style="text-align: center;">
+<img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=300" style="width: 130px; height: 130px; object-fit: cover; border-radius: 50%; border: 3px solid var(--pop-rose-light); margin: 0 auto 0.8rem; display: block;" />
+
+<h3 class="text-sm" style="font-weight: 700;">子供と参加できる<br/>活動多数</h3>
+</div>
+
+<div style="text-align: center;">
+<img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=300" style="width: 130px; height: 130px; object-fit: cover; border-radius: 50%; border: 3px solid var(--pop-rose-light); margin: 0 auto 0.8rem; display: block;" />
+
+<h3 class="text-sm" style="font-weight: 700;">参加者同士の情報交換や<br/>支え合いの場</h3>
+</div>
+
+</div>
+
+---
+layout: testimonial
+transition: pop-bounce
 sound: chime
+zoom: 0.9
 ---
 
-# section（candy）
+# 会員様の声
 
-セクション区切りのキャンディバージョン
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 1rem;">
 
-🔊 効果音: **chime**
+<div style="text-align: center;">
+<img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid var(--pop-rose-light); margin: 0 auto 0.8rem; display: block;" />
+
+### Aさん
+
+<p class="text-sm">「このコミュニティーでたくさんの友達ができました。子育ての悩みも共有できて心強いです。」</p>
+</div>
+
+<div style="text-align: center;">
+<img src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=300" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid var(--pop-rose-light); margin: 0 auto 0.8rem; display: block;" />
+
+### Bさん
+
+<p class="text-sm">「趣味グループで自分の時間を楽しむことができ、リフレッシュできました。」</p>
+</div>
+
+</div>
 
 ---
-layout: statement
-color: dark
+layout: contact
 transition: pop-fade
-sound: click
----
-
-# statement（dark）
-
-白抜き文字の確認
-
-🔊 効果音: **click**
-
----
-layout: statement
-color: cyan
-transition: pop-slide
-sound: false
----
-
-# statement（cyan）
-
-🔇 効果音: **無効**
-
----
-layout: statement
-color: pink
-transition: pop-slide
 sound: sparkle
 ---
 
-# statement（pink）
+## <ph-clipboard-text class="text-xl" style="color: var(--pop-rose)" /> お申し込み
 
-🔊 効果音: **sparkle**
+<div style="margin-top: 0.8rem;">
+<div style="width: 100px; height: 100px; background: var(--pop-bg); border: 2px solid var(--pop-rose-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.8rem;">
+<ph-qr-code class="text-3xl" style="color: var(--pop-rose-light)" />
+</div>
+
+<p class="text-sm">お申し込みは上記のコードの<br/>フォームよりお願いいたします。</p>
+</div>
+
+::right::
+
+## <ph-envelope class="text-xl" style="color: var(--pop-rose)" /> お問い合わせ
+
+<div style="margin-top: 0.8rem;">
+
+**hello@example.com**
+
+<p class="text-sm">ご不明点はいつでもお気軽に<br/>ご連絡ください。</p>
+</div>
 
 ---
-layout: statement
-color: warm
-transition: pop-bounce
+layout: default
+transition: pop-slide
 sound: pop
 ---
 
-# statement（warm）
+# コンポーネント紹介 (1/2)
 
-🔊 効果音: **pop**
+<div style="margin-top: 0.8rem;">
+<ProgressBar label="満足度" :value="95" color="pink" />
+<ProgressBar label="リピート率" :value="80" color="cool" style="margin-top: 0.5rem;" />
+</div>
+
+<StepList :steps="['お申し込み', '初回参加', '定期参加']" color="pink" style="margin-top: 0.8rem;" />
 
 ---
-layout: statement
-color: light
-transition: pop-fade
-sound: false
+layout: default
+transition: pop-slide
+sound: pop
 ---
 
-# statement（light）
+# コンポーネント紹介 (2/2)
 
-背景が明るいバージョン
+<div style="display: flex; gap: 3rem; align-items: center; margin-top: 0.8rem;">
+<div style="text-align: center;">
+<span class="text-huge"><CountUp :to="500" suffix="+" /></span>
+<p class="text-sm">参加者数</p>
+</div>
+<div style="text-align: center;">
+<span class="text-huge"><CountUp :to="30" /></span>
+<p class="text-sm">イベント/月</p>
+</div>
+</div>
 
-🔇 効果音: **無効**
+<PopTimeline :items="[
+  { year: '2024', title: 'コミュニティ設立', desc: '10名でスタート' },
+  { year: '2025', title: '会員100名突破', desc: 'オンライン活動開始' },
+  { year: '2026', title: '全国展開', desc: '500名規模に成長' },
+]" style="margin-top: 1rem;" />
 
 ---
 layout: end
@@ -315,8 +479,6 @@ sound: dramatic
 soundVolume: 0.4
 ---
 
-# ありがとう 💚
+# ありがとう
 
-全レイアウト確認完了！
-
-🔊 効果音: **dramatic**（フィナーレ）
+全レイアウト確認完了!

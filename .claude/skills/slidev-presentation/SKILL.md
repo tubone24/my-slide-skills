@@ -30,7 +30,15 @@ references/template/
 │   ├── fact.vue          # 事実・数値（大きい表示）
 │   ├── image-right.vue   # 画像右配置
 │   ├── image-left.vue    # 画像左配置
-│   └── end.vue           # エンドページ（ハート装飾付き）
+│   ├── end.vue           # エンドページ（ハート装飾付き）
+│   ├── toc.vue           # 目次ページ（白カード＋2カラム番号リスト）
+│   ├── testimonial.vue   # 証言/声（円形写真＋引用）
+│   ├── grid-icons.vue    # 2x2アイコングリッド（白カード）
+│   ├── three-features.vue # 3カラム特徴（円形写真＋キャプション）
+│   ├── contact.vue       # 連絡先（点線区切り2カラム）
+│   ├── image-circle-right.vue  # 円形画像右配置
+│   ├── image-circle-left.vue   # 円形画像左配置
+│   └── image-bottom.vue    # 右下アクセント画像（テキスト主体＋右下に小さめ画像）
 ├── components/
 │   ├── PopCard.vue       # アニメーション付きカード
 │   ├── CountUp.vue       # 数値カウントアップアニメーション
@@ -38,7 +46,9 @@ references/template/
 │   ├── ProgressBar.vue   # アニメーション付きプログレスバー
 │   ├── StepList.vue      # ステップリスト
 │   ├── FloatingEmoji.vue # 装飾用フローティング絵文字
-│   └── PopTimeline.vue   # タイムライン表示
+│   ├── PopTimeline.vue   # タイムライン表示
+│   ├── OrganicDecorations.vue # ベージュテーマ用オーガニック装飾（ブロブ＋雨粒ドット）
+│   ├── PictogramScene.vue # ピクトグラムシーン（アイコン組み合わせイラスト）
 ├── composables/
 │   └── useSoundEffect.js # 効果音合成Composable（Web Audio API）
 ├── global-top.vue        # 効果音トリガー（スライド遷移検知）
@@ -74,7 +84,7 @@ AskUserQuestion:
 #### 3回目の質問（デザイン・スタイル）
 ```
 AskUserQuestion:
-- カラーテーマの好み（ピンク系/イエロー系/シアン系/パープル系/ミックス）
+- カラーテーマの好み（ベージュ系/ピンク系/セージグリーン系/ミックス）
 - トーン（カジュアル/フォーマル/中間）
 - アニメーションの量（多め/標準/控えめ）
 - 特別に使いたいレイアウトや表現はあるか
@@ -163,6 +173,14 @@ transition: pop-slide
 | `image-right` | 画像右 | `image` |
 | `image-left` | 画像左 | `image` |
 | `end` | エンドページ | - |
+| `toc` | 目次ページ | - |
+| `testimonial` | 証言・会員の声 | - |
+| `grid-icons` | 2x2アイコングリッド | - |
+| `three-features` | 3カラム特徴紹介 | - |
+| `contact` | 連絡先・お申し込み | `::right::` スロット |
+| `image-circle-right` | 円形画像右 | `image` |
+| `image-circle-left` | 円形画像左 | `image` |
+| `image-bottom` | 右下アクセント画像（テキスト主体＋右下に小さめ画像） | `image` |
 
 #### 利用可能なスライドトランジション
 
@@ -305,6 +323,52 @@ soundFile: '/sounds/my-effect.mp3'  # public/sounds/ に配置
 - ブラウザのAutoplay Policy対策として、最初のクリック/キー操作後に音声が有効になる
 - PDFエクスポート時は効果音は無視される（SSR/エクスポート環境では動作しない）
 
+#### アイコンの使用
+
+Slidevは[Iconify](https://iconify.design/)アイコンを標準サポート。絵文字の代わりにアイコンコンポーネントを使う。
+
+**テンプレートに含まれるアイコンセット:**
+- `ph` - [Phosphor Icons](https://phosphoricons.com/)（推奨・柔らかいスタイル）
+- `mdi` - [Material Design Icons](https://pictogrammers.com/library/mdi/)（種類が豊富）
+
+**基本構文:**
+```html
+<!-- コンポーネント構文（推奨） -->
+<ph-heart />
+<ph-chat-circle-dots />
+<ph-book-open />
+<mdi-account-circle />
+
+<!-- サイズ・色の指定（UnoCSS/Tailwindクラス） -->
+<ph-heart class="text-3xl text-rose-400" />
+<ph-chat-circle-dots class="text-4xl" style="color: var(--pop-rose)" />
+
+<!-- CSSクラス構文 -->
+<div class="i-ph-heart text-3xl text-rose-400" />
+```
+
+**よく使うアイコン例:**
+
+| 用途 | Phosphor Icons | Material Design Icons |
+|------|---------------|----------------------|
+| 料理/ワークショップ | `<ph-cooking-pot />` | `<mdi-silverware-fork-knife />` |
+| 会話/交流 | `<ph-chat-circle-dots />` | `<mdi-forum />` |
+| 読書/趣味 | `<ph-book-open />` | `<mdi-book-open-variant />` |
+| セミナー/発表 | `<ph-megaphone />` | `<mdi-bullhorn />` |
+| メール | `<ph-envelope />` | `<mdi-email />` |
+| カレンダー | `<ph-calendar />` | `<mdi-calendar />` |
+| チェック | `<ph-check-circle />` | `<mdi-check-circle />` |
+| ハート/いいね | `<ph-heart />` | `<mdi-heart />` |
+| ユーザー/人 | `<ph-user />` | `<mdi-account />` |
+| 場所/地図 | `<ph-map-pin />` | `<mdi-map-marker />` |
+
+**アイコン検索:** [Icones](https://icones.js.org/) でブラウザからアイコンを検索・プレビュー可能
+
+**注意事項:**
+- 絵文字ではなくアイコンコンポーネントを使うこと（PDF/PPTXエクスポート時の互換性向上）
+- `@iconify-json/ph` と `@iconify-json/mdi` はpackage.jsonに含まれている
+- 追加のアイコンセットが必要な場合は `npm install -D @iconify-json/{set-name}` でインストール
+
 #### カスタムコンポーネント
 
 ```html
@@ -336,6 +400,17 @@ soundFile: '/sounds/my-effect.mp3'  # public/sounds/ に配置
 
 <!-- 数値カウントアップ -->
 <span class="text-huge"><CountUp :to="1500" suffix="+" /></span>
+
+<!-- オーガニック装飾（自動表示） -->
+<!-- OrganicDecorationsはbeige系レイアウトに自動的に含まれます -->
+<!-- カスタムスライドで使いたい場合: -->
+<OrganicDecorations />
+
+<!-- ピクトグラムシーン（アイコン組み合わせイラスト） -->
+<PictogramScene scene="expense" />
+<!-- scene: expense / document / inquiry / confused -->
+<!-- size: 'normal'（幅いっぱい、下部配置） / 'small'（コンパクト、コーナー配置） -->
+<PictogramScene scene="confused" size="small" />
 ```
 
 #### ユーティリティCSS
@@ -446,6 +521,7 @@ npx slidev --remote
 - **v-motionで強調**: 重要なポイントにv-motionアニメーションを使う
 - **トランジションを変える**: セクション区切りには異なるトランジションを使い、変化をつける
 - **多様なアニメーションクラス**: pop-bounce-up, pop-slide-right, pop-spin-inなどを混ぜて使う
+- **アイコンは絵文字より見栄えが良い**: `<ph-heart class="text-rose-400" />` のようにIconifyアイコンを活用する
 
 ### レイアウト活用
 - **cover**: 最初のスライドに必ず使用
@@ -463,8 +539,260 @@ npx slidev --remote
 - `<StepList>` で手順やフローを明確に
 - `pop-gradient-text` クラスで重要テキストを目立たせる
 - `v-mark` でライブ感のあるハイライト演出
-- フローティング絵文字 `<FloatingEmoji>` で遊び心を追加
+- フローティング絵文字 `<FloatingEmoji>` で遊び心を追加（ただしプロフェッショナルなプレゼンではIconifyアイコンの使用を推奨）
 - `<PopTimeline>` で時系列を美しく表現
+- ベージュテーマの背景色は `#F5EDE6`。暖かく落ち着いた印象を与える
+- `<OrganicDecorations />` がほとんどのレイアウトに自動で含まれ、角にセージグリーンの円やピンクのブロブ装飾が表示される
+- `toc` レイアウトで目次ページを簡単に作成。番号付きリスト（`<ol>`）を使うと自動でスタイリングされる
+- `testimonial` レイアウトでは `<img>` タグを使うと自動で円形切り抜きされる
+- `contact` レイアウトは `::right::` スロットで2カラム分割（点線区切り付き）
+- `image-circle-right` / `image-circle-left` で円形切り抜き写真付きスライドを作成
+- `pop-dotted-underline` クラスでピンク点線アンダーラインを追加
+- `pop-white-card` クラスで白いカード（ベージュ背景上で映える）を作成
+- `pop-circle-image` クラスで画像を円形切り抜き＋ピンクボーダーに
+
+### コンテンツがはみ出す場合の対処法
+
+スライドの要素が多すぎて画面からはみ出す場合、以下の手段で対処する。**上から順に試すこと。**
+
+#### 1. コンテンツを減らす・分割する（最優先）
+
+根本的な解決策。1スライド1メッセージの原則に戻る。
+
+```markdown
+<!-- BAD: 1スライドに詰め込みすぎ -->
+---
+---
+# トピック
+- 項目1〜項目10（はみ出す）
+
+<!-- GOOD: 2スライドに分割 -->
+---
+---
+# トピック（1/2）
+- 項目1〜5
+
+---
+---
+# トピック（2/2）
+- 項目6〜10
+```
+
+#### 2. `zoom` フロントマター（スライド単位の縮小）
+
+最も簡単な方法。スライド全体を指定倍率に縮小する。
+
+```yaml
+---
+zoom: 0.8
+---
+```
+
+- `0.8` = 80%表示、`0.7` = 70%表示
+- スライドごとに個別指定可能
+- 他のスライドには影響しない
+- **0.7未満は文字が小さくなりすぎるので非推奨**
+
+#### 3. `<Transform>` コンポーネント（要素単位の縮小）
+
+スライドのタイトルはそのままで、コンテンツ部分だけを縮小したい場合。
+
+```html
+# タイトルはそのままのサイズ
+
+<Transform :scale="0.75" origin="top left">
+
+ここの中身だけが75%に縮小される
+
+- リスト項目1
+- リスト項目2
+- リスト項目3
+
+</Transform>
+```
+
+#### 4. スコープ付きCSSスタイル（細かい調整）
+
+特定スライドだけフォントサイズや余白を調整する。
+
+```markdown
+---
+---
+
+# コンテンツが多いスライド
+
+- 項目1
+- 項目2
+
+<style>
+.slidev-layout {
+  font-size: 0.85em;
+  padding: 1.5rem 2.5rem;
+}
+.slidev-layout h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.slidev-layout li {
+  line-height: 1.4;
+  margin-bottom: 0.2em;
+}
+</style>
+```
+
+#### 5. UnoCSS ユーティリティクラス
+
+インラインでサイズやレイアウトを調整する。
+
+```html
+<!-- フォントサイズ縮小 -->
+<div class="text-sm leading-tight">コンパクトなテキスト</div>
+
+<!-- スクロール可能エリア -->
+<div class="overflow-y-auto max-h-80">長いコンテンツ</div>
+
+<!-- グリッドで2カラムに分割して省スペース化 -->
+<div class="grid grid-cols-2 gap-4 text-sm">
+  <div>左カラム</div>
+  <div>右カラム</div>
+</div>
+```
+
+#### よくあるはみ出しパターンと対処法
+
+| パターン | 推奨対処 |
+|---------|---------|
+| リスト項目が多すぎる | `v-clicks` で段階表示 or 2スライドに分割 |
+| カード系レイアウト内で要素が多い | `zoom: 0.8` or グリッド内の余白・フォントサイズを縮小 |
+| 画像＋テキストが長い | テキストを短くする or `zoom: 0.85` |
+| コンポーネントを複数配置 | 2スライドに分割 or `<Transform :scale="0.8">` |
+| タイムライン項目が多い | 項目数を3以下に抑える or `zoom: 0.8` |
+| 目次（toc）項目が多い | 10項目以下に抑える or `zoom: 0.9` |
+
+### ピクトグラムシーンの使い方
+
+`PictogramScene` コンポーネントを使って、Iconifyアイコンを組み合わせた「シチュエーション図」を作成できる。写真の代わりに、ピクトグラム（アイコンの構図）で状況を視覚的に表現する。
+
+#### プリビルトシーン
+
+| シーン名 | 表現する状況 | 構成アイコン |
+|---------|------------|-------------|
+| `expense` | 経費精算に困っている | 書類の山、スプレッドシート、電卓、通貨、時計、困った顔の人 |
+| `document` | 資料作成に困っている | 白紙文書、ペン、プレゼンチャート、砂時計、クエスチョンマーク、困った顔の人 |
+| `inquiry` | 問い合わせ対応に困っている | メール、チャット、電話、通知ベル、困った顔の人 |
+| `confused` | 難しくてわからない | バツ目の顔、クエスチョンマーク、汗、渦巻き |
+
+#### 使用例
+
+```markdown
+<!-- スライドの下部にフルサイズで配置 -->
+# 月末の経費精算、終わらない！
+
+大量の書類、Excel、手作業…
+
+<PictogramScene scene="expense" />
+
+<!-- コーナーに小さく配置（flexと組み合わせ） -->
+<div style="display: flex; gap: 1.5rem; align-items: flex-start;">
+<div style="flex: 1;">
+  メインコンテンツ
+</div>
+<div style="position: relative; width: 120px; flex-shrink: 0; align-self: flex-end;">
+  <PictogramScene scene="confused" size="small" />
+</div>
+</div>
+```
+
+#### 新しいシーンの作り方
+
+PictogramScene.vueに新しいシーンを追加する手順：
+
+1. **中心となるキャラクター**: `ph-smiley-sad`（困った顔）や `ph-smiley-x-eyes`（バツ目）を中央に大きく配置
+2. **状況を表すアイコン**: 左右に配置して状況を説明
+3. **ストレス/感情指標**: `ph-drop`（汗）、`ph-warning`（警告）、`ph-question`（疑問）などを散りばめる
+4. **アンビエント装飾**: 背景に半透明の円を配置して奥行き感を出す
+5. **アニメーション**: `scene-float`、`scene-pulse`、`scene-shake` などを適用
+
+**配色ルール:**
+- 人物: `var(--pop-coral)` / `#E8A0A0`
+- 書類・ツール系: `var(--pop-sage)` / `#A8C5B8`
+- 警告・ストレス系: `var(--pop-rose)` / `#D4918F`
+- 背景装飾: `var(--pop-rose-light)` / `#E8B4B8`（opacity: 0.12）
+
+**利用可能なCSSアニメーション:**
+
+| アニメーション名 | 効果 | 用途 |
+|----------------|------|------|
+| `scene-float` | 上下にふわふわ | 浮遊する書類、通貨 |
+| `scene-float-alt` | 上下＋微回転 | 散らばった書類 |
+| `scene-pulse` | 脈動（拡大縮小） | 警告、時計、ベル |
+| `scene-shake` | 左右に振動 | 鳴る電話、ベル |
+| `scene-sway` | 左右に揺れ | 積み重なった書類 |
+| `scene-bob` | 不規則な移動 | 中央のキャラクター |
+| `scene-drift-in` | 浮遊移動 | 飛んでくるメール |
+
+#### ピクトグラムに使える Phosphor Icons 素材集
+
+| カテゴリ | アイコン | コンポーネント名 |
+|---------|---------|----------------|
+| **人物・感情** | 困った顔 | `<ph-smiley-sad />` |
+|  | バツ目 | `<ph-smiley-x-eyes />` |
+|  | 人物 | `<ph-user />` |
+|  | 人物（丸枠） | `<ph-user-circle />` |
+| **書類・事務** | 文書 | `<ph-file-text />` |
+|  | 表/スプレッドシート | `<ph-table />` |
+|  | レシート | `<ph-receipt />` |
+|  | プレゼンチャート | `<ph-presentation-chart />` |
+|  | クリップボード | `<ph-clipboard-text />` |
+| **時間・締切** | 時計 | `<ph-clock />` |
+|  | 砂時計 | `<ph-hourglass />` |
+|  | タイマー | `<ph-timer />` |
+|  | カレンダー | `<ph-calendar />` |
+| **お金・計算** | 電卓 | `<ph-calculator />` |
+|  | 日本円 | `<ph-currency-jpy />` |
+|  | お金 | `<ph-money />` |
+| **コミュニケーション** | メール | `<ph-envelope />` |
+|  | チャット | `<ph-chat-circle-dots />` |
+|  | 電話 | `<ph-phone />` |
+|  | 通知ベル | `<ph-bell-ringing />` |
+| **ストレス・感情表現** | 汗 | `<ph-drop />` |
+|  | 警告 | `<ph-warning />` |
+|  | クエスチョン | `<ph-question />` |
+|  | 渦巻き | `<ph-spiral />` |
+|  | 稲妻 | `<ph-lightning />` |
+| **コード・技術** | ターミナル | `<ph-terminal />` |
+|  | コード | `<ph-code />` |
+|  | ブラウザ | `<ph-browser />` |
+|  | データベース | `<ph-database />` |
+
+#### インラインでのコードブロック/Notebook風デザイン
+
+写真の代わりにターミナルやJupyter Notebookのモックアップをインラインで作る方法：
+
+**ターミナル風:**
+```html
+<div style="background: #1E293B; border-radius: 12px; padding: 1rem 1.2rem; font-family: 'Courier New', monospace; font-size: 0.85rem; color: #A3E635; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+  <div style="color: #64748B; margin-bottom: 0.5rem; font-size: 0.75rem;">Terminal</div>
+  <div style="color: #94A3B8;">$ python agent.py</div>
+  <div style="color: #A3E635;">>>> 出力テキスト...</div>
+</div>
+```
+
+**Jupyter Notebook風:**
+```html
+<div style="background: white; border-radius: 8px; border: 1px solid #E2E8F0; box-shadow: 0 2px 10px rgba(0,0,0,0.08); overflow: hidden;">
+  <div style="background: #F8FAFC; padding: 0.5rem 0.8rem; border-bottom: 1px solid #E2E8F0; font-size: 0.7rem; color: #64748B; display: flex; align-items: center; gap: 0.5rem;">
+    <span style="background: #EF4444; width: 10px; height: 10px; border-radius: 50%; display: inline-block;"></span>
+    <span style="background: #F59E0B; width: 10px; height: 10px; border-radius: 50%; display: inline-block;"></span>
+    <span style="background: #22C55E; width: 10px; height: 10px; border-radius: 50%; display: inline-block;"></span>
+    <span style="margin-left: 0.5rem;">notebook.ipynb</span>
+  </div>
+  <div style="padding: 0.6rem 0.8rem; border-bottom: 1px solid #F1F5F9; display: flex; align-items: center; gap: 0.5rem;">
+    <span style="background: #DBEAFE; color: #3B82F6; padding: 0.1rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-family: monospace;">In [1]:</span>
+    <span style="font-family: monospace; font-size: 0.8rem; color: #334155;">コード内容</span>
+  </div>
+</div>
+```
 
 ## 重要な注意事項
 

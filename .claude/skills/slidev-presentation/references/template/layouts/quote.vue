@@ -13,6 +13,7 @@ onMounted(() => {
 
 <template>
   <div class="slidev-layout quote-layout">
+    <OrganicDecorations />
     <!-- Big decorative quote mark -->
     <div class="quote-mark" :class="{ visible: isVisible }">&#x201C;</div>
 

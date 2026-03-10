@@ -4,45 +4,52 @@
  */
 
 /* ===== Font Import ===== */
-@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Poppins:wght@400;500;600;700;800;900&family=Dela+Gothic+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Poppins:wght@400;500;600;700;800;900&family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap');
 
 /* ===== CSS Custom Properties ===== */
 :root {
-  /* Pop Color Palette */
-  --pop-bg: #FFF8F9;
-  --pop-bg-alt: #FFF0F5;
-  --pop-bg-yellow: #FFFDE7;
-  --pop-bg-mint: #F0FFF4;
-  --pop-text: #1E3A34;
-  --pop-text-light: #4A6B64;
-  --pop-text-muted: #8BA8A0;
+  /* Warm Beige Palette */
+  --pop-bg: #F5EDE6;
+  --pop-bg-alt: #FAF6F2;
+  --pop-bg-card: #FFFBF8;
+  --pop-bg-yellow: #FFF8E7;
+  --pop-bg-mint: #EFF8F3;
+  --pop-text: #3D3D3D;
+  --pop-text-light: #5A5A5A;
+  --pop-text-muted: #9B9B9B;
 
-  /* Vivid Accents */
-  --pop-pink: #FF6B9D;
-  --pop-pink-light: #FFB4D2;
-  --pop-hot-pink: #FF2D7B;
+  /* Vivid Accents - updated to rose/sage palette */
+  --pop-pink: #D4918F;
+  --pop-pink-light: #E8B4B8;
+  --pop-hot-pink: #C07B79;
+  --pop-rose: #D4918F;
+  --pop-rose-light: #E8B4B8;
+  --pop-rose-dark: #C07B79;
+  --pop-sage: #A8C5B8;
+  --pop-sage-light: #C5DDD2;
+  --pop-sage-dark: #8FB8A0;
   --pop-yellow: #FFD93D;
   --pop-yellow-light: #FFF176;
   --pop-cyan: #4ECDC4;
   --pop-cyan-light: #A8E6CF;
   --pop-purple: #10B981;
   --pop-purple-light: #A7F3D0;
-  --pop-orange: #FF8A65;
-  --pop-coral: #FF6B6B;
-  --pop-lavender: #6EE7B7;
-  --pop-mint: #6EE7B7;
+  --pop-orange: #E8A68C;
+  --pop-coral: #E8A0A0;
+  --pop-lavender: #C5DDD2;
+  --pop-mint: #C5DDD2;
 
-  /* Gradients */
-  --pop-gradient-main: linear-gradient(135deg, #FF6B9D, #FF2D7B, #10B981);
-  --pop-gradient-warm: linear-gradient(135deg, #FFD93D, #FF8A65, #FF6B6B);
-  --pop-gradient-cool: linear-gradient(135deg, #4ECDC4, #10B981);
-  --pop-gradient-candy: linear-gradient(135deg, #FF6B9D, #FFD93D, #4ECDC4);
-  --pop-gradient-sunset: linear-gradient(135deg, #FF6B6B, #FF8A65, #FFD93D);
-  --pop-gradient-dream: linear-gradient(135deg, #6EE7B7, #FFB4D2, #FFF176);
+  /* Gradients - softer */
+  --pop-gradient-main: linear-gradient(135deg, #D4918F, #C07B79);
+  --pop-gradient-warm: linear-gradient(135deg, #E8A68C, #D4918F);
+  --pop-gradient-cool: linear-gradient(135deg, #A8C5B8, #8FB8A0);
+  --pop-gradient-candy: linear-gradient(135deg, #D4918F, #E8A68C, #A8C5B8);
+  --pop-gradient-sunset: linear-gradient(135deg, #E8A0A0, #E8A68C, #FFD93D);
+  --pop-gradient-dream: linear-gradient(135deg, #C5DDD2, #E8B4B8, #FAF6F2);
 
-  /* Typography */
-  --pop-font-heading: 'Dela Gothic One', 'Zen Maru Gothic', sans-serif;
-  --pop-font-body: 'Poppins', 'Zen Maru Gothic', sans-serif;
+  /* Typography - use rounded fonts */
+  --pop-font-heading: 'Zen Maru Gothic', 'M PLUS Rounded 1c', sans-serif;
+  --pop-font-body: 'Zen Maru Gothic', 'M PLUS Rounded 1c', sans-serif;
   --pop-font-accent: 'Zen Maru Gothic', sans-serif;
 
   --pop-font-size-xs: 0.75rem;
@@ -73,8 +80,8 @@
   /* Decorative */
   --pop-radius: 16px;
   --pop-radius-lg: 24px;
-  --pop-shadow: 0 4px 20px rgba(255, 107, 157, 0.15);
-  --pop-shadow-lg: 0 8px 40px rgba(255, 107, 157, 0.2);
+  --pop-shadow: 0 4px 20px rgba(212, 145, 143, 0.12);
+  --pop-shadow-lg: 0 8px 40px rgba(212, 145, 143, 0.15);
 }
 
 /* ===== Base Styles ===== */
@@ -99,7 +106,7 @@
   inset: 0;
   background-image: radial-gradient(circle, var(--pop-pink-light) 0.8px, transparent 0.8px);
   background-size: 24px 24px;
-  opacity: 0.15;
+  opacity: 0.06;
   pointer-events: none;
 }
 
@@ -110,7 +117,7 @@
   font-weight: normal;
   letter-spacing: -0.01em;
   line-height: 1.6;
-  color: var(--pop-text);
+  color: var(--pop-rose);
   margin-bottom: var(--pop-space-md);
   position: relative;
 }
@@ -121,7 +128,7 @@
   font-weight: normal;
   letter-spacing: 0em;
   line-height: 1.6;
-  color: var(--pop-text);
+  color: var(--pop-rose);
   margin-bottom: var(--pop-space-sm);
 }
 
@@ -154,12 +161,12 @@
 }
 
 .slidev-layout li::marker {
-  color: var(--pop-pink);
+  color: var(--pop-rose);
   font-weight: 700;
 }
 
 .slidev-layout strong {
-  color: var(--pop-hot-pink);
+  color: var(--pop-rose-dark);
   font-weight: 700;
 }
 
@@ -170,16 +177,16 @@
 }
 
 .slidev-layout a {
-  color: var(--pop-pink);
+  color: var(--pop-rose);
   text-decoration: none;
   font-weight: 600;
-  border-bottom: 2px solid var(--pop-pink-light);
+  border-bottom: 2px solid var(--pop-rose-light);
   transition: all var(--pop-duration-fast) var(--pop-ease);
 }
 
 .slidev-layout a:hover {
-  color: var(--pop-hot-pink);
-  border-bottom-color: var(--pop-hot-pink);
+  color: var(--pop-rose-dark);
+  border-bottom-color: var(--pop-rose-dark);
 }
 
 /* ===== Code Blocks ===== */
@@ -198,14 +205,14 @@
   padding: 0.15em 0.5em;
   border-radius: 8px;
   font-size: 0.9em;
-  color: var(--pop-hot-pink);
+  color: var(--pop-rose-dark);
   font-weight: 600;
-  border: 1px solid var(--pop-pink-light);
+  border: 1px solid var(--pop-rose-light);
 }
 
 /* ===== Blockquote ===== */
 .slidev-layout blockquote {
-  border-left: 4px solid var(--pop-pink);
+  border-left: 4px solid var(--pop-rose);
   background: var(--pop-bg-alt);
   padding: var(--pop-space-sm) var(--pop-space-md);
   border-radius: 0 var(--pop-radius) var(--pop-radius) 0;
@@ -461,7 +468,7 @@
   border-radius: var(--pop-radius-lg);
   padding: var(--pop-space-md) var(--pop-space-lg);
   box-shadow: var(--pop-shadow);
-  border: 2px solid var(--pop-pink-light);
+  border: 2px solid var(--pop-rose-light);
   position: relative;
 }
 
@@ -546,8 +553,8 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 157, 0.2); }
-  50% { box-shadow: 0 0 40px rgba(255, 107, 157, 0.4); }
+  0%, 100% { box-shadow: 0 0 20px rgba(212, 145, 143, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(212, 145, 143, 0.4); }
 }
 
 @keyframes gradient-shift {
@@ -597,6 +604,56 @@
 .rounded-pop-lg { border-radius: var(--pop-radius-lg); }
 .shadow-pop { box-shadow: var(--pop-shadow); }
 .shadow-pop-lg { box-shadow: var(--pop-shadow-lg); }
+
+/* ===== Beige Theme Utilities ===== */
+.text-rose { color: var(--pop-rose); }
+.text-rose-dark { color: var(--pop-rose-dark); }
+.text-sage { color: var(--pop-sage); }
+.text-sage-dark { color: var(--pop-sage-dark); }
+.bg-beige { background-color: var(--pop-bg); }
+.bg-card { background-color: var(--pop-bg-card); }
+
+/* Pink dotted underline */
+.pop-dotted-underline {
+  border-bottom: 3px dotted var(--pop-rose);
+  padding-bottom: 4px;
+  display: inline-block;
+}
+
+/* White content card (on beige background) */
+.pop-white-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem 3rem;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
+  position: relative;
+  z-index: 1;
+}
+
+/* Circle image frame */
+.pop-circle-image {
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--pop-rose-light);
+  box-shadow: 0 4px 15px rgba(212, 145, 143, 0.15);
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+/* Number circle (for TOC) */
+.pop-number-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  color: var(--pop-rose);
+  font-family: var(--pop-font-heading);
+  font-weight: 700;
+  font-size: 1.1em;
+  flex-shrink: 0;
+}
 
 /* ===== Print/Export Styles ===== */
 @media print {
