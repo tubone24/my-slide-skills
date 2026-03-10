@@ -136,6 +136,10 @@ transition: pop-fade
 
 <PictogramScene scene="expense" />
 
+<style>
+.slidev-layout { display: flex; flex-direction: column; }
+</style>
+
 ---
 layout: statement
 color: warm
@@ -154,6 +158,10 @@ transition: pop-fade
 
 <PictogramScene scene="document" />
 
+<style>
+.slidev-layout { display: flex; flex-direction: column; }
+</style>
+
 ---
 layout: statement
 color: warm
@@ -171,6 +179,10 @@ transition: pop-fade
 未読メッセージが溜まる一方…
 
 <PictogramScene scene="inquiry" />
+
+<style>
+.slidev-layout { display: flex; flex-direction: column; }
+</style>
 
 ---
 layout: statement
