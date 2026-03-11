@@ -1,16 +1,153 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, watch, onMounted, onUnmounted, getCurrentInstance } from 'vue'
+import { useNav } from '@slidev/client'
 
-defineProps({
+const props = defineProps({
   background: { type: String, default: '' },
   subtitle: { type: String, default: '' },
+  titleEffect: { type: String, default: '' },
+  titleEffectSound: { type: String, default: '' },
+  titleEffectVolume: { type: Number, default: 0.5 },
 })
 
 const isVisible = ref(false)
+const contentRef = ref(null)
+
+const { currentSlideNo } = useNav()
+
+// タイプライター演出の元HTML（初回取得時に保存）
+let originalHTML = ''
+let twRunning = false
+let cleanupTimers = []
+let myPage = -1
+
+function cleanup() {
+  twRunning = false
+  cleanupTimers.forEach(id => clearTimeout(id))
+  cleanupTimers = []
+}
+
+// DOMからこのスライドのページ番号を取得（slidev-page-N クラスから）
+function detectMyPage() {
+  if (myPage > 0) return myPage
+  // $page グローバルプロパティを試す
+  const instance = getCurrentInstance()
+  const injectedPage = instance?.proxy?.$page
+  if (typeof injectedPage === 'number' && injectedPage > 0) {
+    myPage = injectedPage
+    return myPage
+  }
+  // フォールバック: DOMクラスから取得
+  const el = contentRef.value?.closest('[class*="slidev-page-"]')
+  if (el) {
+    for (const cls of el.classList) {
+      const match = cls.match(/^slidev-page-(\d+)$/)
+      if (match) {
+        myPage = parseInt(match[1])
+        return myPage
+      }
+    }
+  }
+  return -1
+}
 
 onMounted(() => {
   isVisible.value = true
 })
+
+onUnmounted(cleanup)
+
+// currentSlideNo がこのスライドのページ番号になった瞬間にトリガー
+if (props.titleEffect === 'typewriter') {
+  watch(currentSlideNo, (pageNo) => {
+    const page = detectMyPage()
+    if (page > 0 && pageNo === page) {
+      waitForH1AndStart()
+    }
+  }, { immediate: true })
+}
+
+// h1 がDOMに現れるまでリトライ（最大15回 x 50ms = 750ms）
+function waitForH1AndStart(retries = 15) {
+  const h1 = contentRef.value?.querySelector('h1')
+  if (h1) {
+    startTypewriterEffect(h1)
+  } else if (retries > 0) {
+    const tid = setTimeout(() => waitForH1AndStart(retries - 1), 50)
+    cleanupTimers.push(tid)
+  }
+}
+
+function startTypewriterEffect(h1) {
+  // 前回の演出が残っていたらクリーンアップ
+  cleanup()
+  twRunning = true
+
+  // 初回のみ元HTMLを保存。再実行時は保存済みを使う
+  if (!originalHTML) {
+    originalHTML = h1.innerHTML
+  }
+
+  const fullHTML = originalHTML
+  const tempDiv = document.createElement('div')
+  tempDiv.innerHTML = fullHTML
+  const fullText = tempDiv.textContent.trim()
+
+  h1.innerHTML = ''
+  h1.classList.remove('tw-jingle-reveal')
+  h1.classList.add('tw-typing')
+
+  // Play sound（プリフェッチ済みキャッシュを優先使用）
+  if (props.titleEffectSound) {
+    const cached = typeof window !== 'undefined' && window.__slidevAudioCache?.get(props.titleEffectSound)
+    const audio = cached || new Audio(props.titleEffectSound)
+    audio.currentTime = 0
+    audio.volume = props.titleEffectVolume
+    audio.play().catch(() => {})
+  }
+
+  const chars = [...fullText]
+  const TYPEWRITER_DURATION = 2000
+  const INITIAL_DELAY = 400
+  const charDelay = Math.floor(TYPEWRITER_DURATION / Math.max(chars.length, 1))
+  let charIndex = 0
+  let completed = false
+
+  const finish = (withJingle) => {
+    if (completed) return
+    completed = true
+    twRunning = false
+    h1.innerHTML = fullHTML
+    h1.classList.remove('tw-typing')
+    if (withJingle) {
+      h1.classList.add('tw-jingle-reveal')
+      const tid = setTimeout(() => h1.classList.remove('tw-jingle-reveal'), 600)
+      cleanupTimers.push(tid)
+    }
+  }
+
+  const typeNext = () => {
+    if (completed) return
+    if (charIndex < chars.length) {
+      charIndex++
+      h1.textContent = fullText.slice(0, charIndex)
+      if (charIndex < chars.length) {
+        const tid = setTimeout(typeNext, charDelay)
+        cleanupTimers.push(tid)
+      } else {
+        finish(false)
+      }
+    }
+  }
+
+  // cover fade-in 後にタイピング開始
+  const t1 = setTimeout(typeNext, INITIAL_DELAY)
+  cleanupTimers.push(t1)
+
+  // 2秒後（ジングル突入）に残り全表示＋インパクト演出
+  const t2 = setTimeout(() => finish(true), TYPEWRITER_DURATION + INITIAL_DELAY)
+  cleanupTimers.push(t2)
+}
 </script>
 
 <template>
@@ -25,7 +162,7 @@ onMounted(() => {
     <div class="corner-deco corner-deco-br" />
 
     <!-- Content -->
-    <div class="cover-content" :class="{ 'cover-visible': isVisible }">
+    <div ref="contentRef" class="cover-content" :class="{ 'cover-visible': isVisible }">
       <div class="cover-accent-bar" />
       <slot />
       <div v-if="subtitle" class="cover-subtitle">{{ subtitle }}</div>
@@ -189,5 +326,38 @@ onMounted(() => {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+/* Typewriter effect styles */
+.cover :deep(h1.tw-typing) {
+  border-right: 3px solid var(--pop-rose, #D4918F);
+  padding-right: 6px;
+  animation: tw-cursor-blink 0.6s step-end infinite;
+  min-height: 1.2em;
+}
+
+.cover :deep(h1.tw-jingle-reveal) {
+  animation: tw-jingle-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  border-right: none;
+}
+
+@keyframes tw-cursor-blink {
+  0%, 100% { border-color: var(--pop-rose, #D4918F); }
+  50% { border-color: transparent; }
+}
+
+@keyframes tw-jingle-pop {
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  40% {
+    transform: scale(1.12);
+    filter: brightness(1.3);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
 }
 </style>

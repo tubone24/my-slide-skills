@@ -11,6 +11,16 @@ defaults:
   transition: pop-fade
 ---
 
+<!-- 空白リードインスライド（クリックでタイトルへ） -->
+
+---
+layout: cover
+titleEffect: typewriter
+titleEffectSound: /Typewriter01-1.mp3
+titleEffectVolume: 0.5
+sound: true
+---
+
 # AIエージェント<br>開発運用入門
 
 生成AI深掘りガイド
@@ -36,9 +46,9 @@ zoom: 0.8
 
 ### 著書
 
-- **AIエージェント開発運用入門**（SBクリエイティブ）
-- **やさしいMCP入門**（秀和システム）
-- **K.A.G Tech Book**（KDDIアジャイル開発センター）
+- <BookHover image="/books/ai-agent.webp" title="AIエージェント開発運用入門"><strong>AIエージェント開発運用入門</strong>（SBクリエイティブ）<template #detail><p><strong>著者:</strong> 御田 稔 / 大坪 悠 / 塚田 真規</p><p><strong>出版社:</strong> SBクリエイティブ｜<strong>刊行日:</strong> 2025年10月1日</p><p><strong>仕様:</strong> B5判・408ページ・フルカラー</p><p>LangGraph・Mastra・Strands Agentsなどのフレームワークと、Langfuse・Ragasなどの評価ツールを中心に、AIエージェントの開発から本番運用・AWSデプロイまでをハンズオン形式で解説。ITエンジニア本大賞2026 技術書部門ベスト10選出。</p></template></BookHover>
+- <BookHover image="/books/yasasii-mcp.webp" title="やさしいMCP入門"><strong>やさしいMCP入門</strong>（秀和システム）<template #detail><p><strong>著者:</strong> 御田 稔 / 大坪 悠</p><p><strong>出版社:</strong> 秀和システム｜<strong>刊行日:</strong> 2025年6月30日</p><p><strong>仕様:</strong> A5判・160ページ｜<strong>定価:</strong> 1,760円（税込）</p><p>AIエージェント時代の標準規格「MCP（Model Context Protocol）」について、豊富な図解で基礎からビジネス活用・今後の展望まで解説した入門書。大バズりしたスライドを書籍化。</p></template></BookHover>
+- <BookHover image="/books/kag-tech-book.webp" title="KAG Tech Book Vol.1"><strong>K.A.G Tech Book</strong>（技術書典）<template #detail><p><strong>執筆:</strong> 大坪 悠 ほかKAG有志メンバー</p><p><strong>発行:</strong> KDDIアジャイル開発センター株式会社</p><p>Celery、AIエージェント活用、スクラム×SRE、ピープルマネジメントなど、KAGメンバーの実務経験に基づく多様なトピックをまとめた技術同人誌。技術書典にて頒布。</p></template></BookHover>
 
 ### SNS
 

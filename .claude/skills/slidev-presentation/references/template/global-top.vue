@@ -2,8 +2,9 @@
 /**
  * Global top component - Sound effects on slide transitions
  * Watches page changes and plays sound effects based on frontmatter settings
+ * Also prefetches titleEffectSound audio files for instant playback
  */
-import { watch, ref } from 'vue'
+import { watch, ref, onMounted } from 'vue'
 import { useNav, configs } from '@slidev/client'
 import { useSoundEffect } from './composables/useSoundEffect.js'
 
@@ -11,6 +12,32 @@ const { currentSlideNo, slides } = useNav()
 const { play } = useSoundEffect()
 
 const initialized = ref(false)
+
+// --- Audio prefetch cache ---
+// titleEffectSound で指定された音声ファイルを先読みしてキャッシュ
+if (typeof window !== 'undefined' && !window.__slidevAudioCache) {
+  window.__slidevAudioCache = new Map()
+}
+
+function prefetchAudioFiles() {
+  if (typeof window === 'undefined' || !slides.value) return
+  for (const slide of slides.value) {
+    const fm = slide.meta?.slide?.frontmatter || {}
+    const soundFile = fm.titleEffectSound
+    if (soundFile && !window.__slidevAudioCache.has(soundFile)) {
+      const audio = new Audio()
+      audio.preload = 'auto'
+      audio.src = soundFile
+      // 読み込み開始を促す
+      audio.load()
+      window.__slidevAudioCache.set(soundFile, audio)
+    }
+  }
+}
+
+onMounted(() => {
+  prefetchAudioFiles()
+})
 
 // headmatter からグローバル設定を取得
 function getGlobalConfig() {

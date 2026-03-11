@@ -2,18 +2,9 @@
 import { ref, onMounted } from 'vue'
 
 const isVisible = ref(false)
-const hearts = ref([])
 
 onMounted(() => {
   isVisible.value = true
-  hearts.value = Array.from({ length: 20 }, () => ({
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 14 + 6,
-    delay: Math.random() * 4,
-    duration: Math.random() * 3 + 2,
-    opacity: Math.random() * 0.3 + 0.1,
-  }))
 })
 </script>
 
@@ -21,21 +12,6 @@ onMounted(() => {
   <div class="slidev-layout end-layout">
     <OrganicDecorations />
     <div class="end-gradient-bg" />
-
-    <!-- Floating hearts -->
-    <div
-      v-for="(h, i) in hearts"
-      :key="i"
-      class="end-heart"
-      :style="{
-        left: h.x + '%',
-        top: h.y + '%',
-        fontSize: h.size + 'px',
-        animationDelay: h.delay + 's',
-        animationDuration: h.duration + 's',
-        opacity: h.opacity,
-      }"
-    >&#x2665;</div>
 
     <div class="end-content" :class="{ visible: isVisible }">
       <slot />
@@ -63,19 +39,6 @@ onMounted(() => {
   inset: 0;
   background: radial-gradient(circle at 50% 50%, rgba(212, 145, 143, 0.08), transparent 70%);
   pointer-events: none;
-}
-
-.end-heart {
-  position: absolute;
-  color: #E8B4B8;
-  pointer-events: none;
-  animation: heart-float 3s ease-in-out infinite;
-}
-
-@keyframes heart-float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  25% { transform: translateY(-8px) rotate(5deg); }
-  75% { transform: translateY(5px) rotate(-5deg); }
 }
 
 .end-content {

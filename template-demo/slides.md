@@ -13,6 +13,16 @@ defaults:
   transition: pop-fade
 ---
 
+<!-- 空白リードインスライド（クリックでタイトルへ） -->
+
+---
+layout: cover
+titleEffect: typewriter
+titleEffectSound: /Typewriter01-1.mp3
+titleEffectVolume: 0.5
+sound: false
+---
+
 # 全レイアウト確認デモ
 
 18種類のレイアウト + コンポーネントをチェック
@@ -38,8 +48,8 @@ zoom: 0.8
 
 ### 著書
 
-- **K.A.G Tech Book**（KDDIアジャイル開発センター）
-- **やさしいMCP入門**（秀和システム）
+- <BookHover image="/books/kag-tech-book.webp" title="KAG Tech Book Vol.1"><strong>K.A.G Tech Book</strong>（技術書典）<template #detail><p><strong>執筆:</strong> 大坪 悠 ほかKAG有志メンバー</p><p><strong>発行:</strong> KDDIアジャイル開発センター株式会社</p><p>Celery、AIエージェント活用、スクラム×SRE、ピープルマネジメントなど、KAGメンバーの実務経験に基づく多様なトピックをまとめた技術同人誌。技術書典にて頒布。</p></template></BookHover>
+- <BookHover image="/books/yasasii-mcp.webp" title="やさしいMCP入門"><strong>やさしいMCP入門</strong>（秀和システム）<template #detail><p><strong>著者:</strong> 御田 稔 / 大坪 悠</p><p><strong>出版社:</strong> 秀和システム｜<strong>刊行日:</strong> 2025年6月30日</p><p><strong>仕様:</strong> A5判・160ページ｜<strong>定価:</strong> 1,760円（税込）</p><p>AIエージェント時代の標準規格「MCP（Model Context Protocol）」について、豊富な図解で基礎からビジネス活用・今後の展望まで解説した入門書。大バズりしたスライドを書籍化。</p></template></BookHover>
 
 ### SNS
 
