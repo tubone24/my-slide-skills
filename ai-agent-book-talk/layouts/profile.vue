@@ -8,6 +8,8 @@ defineProps({
   title: { type: String, default: '' },
   qrcode: { type: String, default: '' },
   qrcodeLabel: { type: String, default: 'Portfolio' },
+  bannerImage: { type: String, default: '' },
+  bannerLabel: { type: String, default: '' },
 })
 
 const leftVisible = ref(false)
@@ -45,10 +47,16 @@ onMounted(() => {
       </div>
     </div>
 
-    <!-- QR code (bottom-right) -->
-    <div v-if="qrcode" class="profile-qrcode" :class="{ visible: rightVisible }">
-      <img :src="qrcode" alt="QR Code" class="profile-qrcode-img" />
-      <span class="profile-qrcode-label">{{ qrcodeLabel }}</span>
+    <!-- Banner + QR code (bottom-right) -->
+    <div v-if="qrcode || bannerImage" class="profile-bottom-bar" :class="{ visible: rightVisible }">
+      <div v-if="bannerImage" class="profile-banner">
+        <img :src="bannerImage" alt="Banner" class="profile-banner-img" />
+        <span v-if="bannerLabel" class="profile-banner-label">{{ bannerLabel }}</span>
+      </div>
+      <div v-if="qrcode" class="profile-qrcode">
+        <img :src="qrcode" alt="QR Code" class="profile-qrcode-img" />
+        <span class="profile-qrcode-label">{{ qrcodeLabel }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -295,23 +303,54 @@ onMounted(() => {
   transform: rotate(45deg);
 }
 
-/* ========== QR code (bottom-right) ========== */
-.profile-qrcode {
+/* ========== Bottom bar (banner + QR code) ========== */
+.profile-bottom-bar {
   position: absolute;
   bottom: 1.5rem;
   right: 1.8rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
+  gap: 1rem;
   z-index: 2;
   opacity: 0;
   transform: translateY(15px);
   transition: all 800ms cubic-bezier(0.22, 1, 0.36, 1) 400ms;
 }
 
-.profile-qrcode.visible {
+.profile-bottom-bar.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ========== Banner (left of QR code) ========== */
+.profile-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-banner-img {
+  height: 150px;
+  width: auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(168, 197, 184, 0.25);
+  object-fit: contain;
+}
+
+.profile-banner-label {
+  font-family: var(--pop-font-accent);
+  font-size: 0.6rem;
+  color: var(--pop-text-light);
+  margin-top: 0.3rem;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+}
+
+/* ========== QR code ========== */
+.profile-qrcode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .profile-qrcode-img {

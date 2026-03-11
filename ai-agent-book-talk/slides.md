@@ -23,6 +23,8 @@ nameEn: Yu Otsubo
 title: ソフトウェアエンジニア @ KAG
 qrcode: /qrcode-portfolio.png
 qrcodeLabel: Portfolio
+bannerImage: https://sottome.digital/ogp.png
+bannerLabel: SottoMe
 transition: pop-slide
 sound: chime
 zoom: 0.8
