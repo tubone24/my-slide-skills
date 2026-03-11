@@ -48,8 +48,10 @@ defineProps({
 }
 
 .image-frame img {
-  width: 100%;
-  height: auto;
+  max-height: 60vh;
+  width: auto;
+  max-width: 100%;
   display: block;
+  object-fit: contain;
 }
 </style>

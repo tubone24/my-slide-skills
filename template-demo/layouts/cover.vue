@@ -7,42 +7,22 @@ defineProps({
 })
 
 const isVisible = ref(false)
-const sparkles = ref([])
 
 onMounted(() => {
   isVisible.value = true
-  // Generate random sparkle positions
-  sparkles.value = Array.from({ length: 12 }, () => ({
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 16 + 8,
-    delay: Math.random() * 3,
-    duration: Math.random() * 2 + 2,
-  }))
 })
 </script>
 
 <template>
   <div class="slidev-layout cover" :style="background ? { backgroundImage: `url(${background})`, backgroundSize: 'cover' } : {}">
-    <!-- Decorative gradient orbs -->
+    <!-- Decorative gradient orbs (static) -->
     <div class="cover-orb cover-orb-1" />
     <div class="cover-orb cover-orb-2" />
     <div class="cover-orb cover-orb-3" />
 
-    <!-- Sparkles -->
-    <div
-      v-for="(s, i) in sparkles"
-      :key="i"
-      class="cover-sparkle"
-      :style="{
-        left: s.x + '%',
-        top: s.y + '%',
-        width: s.size + 'px',
-        height: s.size + 'px',
-        animationDelay: s.delay + 's',
-        animationDuration: s.duration + 's',
-      }"
-    />
+    <!-- Static corner decorations -->
+    <div class="corner-deco corner-deco-tl" />
+    <div class="corner-deco corner-deco-br" />
 
     <!-- Content -->
     <div class="cover-content" :class="{ 'cover-visible': isVisible }">
@@ -65,6 +45,7 @@ onMounted(() => {
   height: 100%;
   min-height: 100%;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .cover::before {
@@ -76,7 +57,25 @@ onMounted(() => {
   pointer-events: none;
 }
 
-/* Gradient orbs */
+/* Static dots in bottom-left corner (::after) */
+.cover::after {
+  content: '';
+  position: absolute;
+  bottom: 40px;
+  left: 30px;
+  width: 60px;
+  height: 50px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle, #D4918F 3px, transparent 3px) 0px 0px,
+    radial-gradient(circle, #A8C5B8 2.5px, transparent 2.5px) 25px 10px,
+    radial-gradient(circle, #E8A68C 2px, transparent 2px) 10px 30px,
+    radial-gradient(circle, #D4918F 1.5px, transparent 1.5px) 45px 35px;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+}
+
+/* Gradient orbs (static, no animation) */
 .cover-orb {
   position: absolute;
   border-radius: 50%;
@@ -91,7 +90,6 @@ onMounted(() => {
   background: #D4918F;
   top: -50px;
   right: -50px;
-  animation: float 6s ease-in-out infinite;
 }
 
 .cover-orb-2 {
@@ -100,7 +98,6 @@ onMounted(() => {
   background: #E8A68C;
   bottom: -30px;
   left: -30px;
-  animation: float 5s ease-in-out infinite 1s;
 }
 
 .cover-orb-3 {
@@ -110,24 +107,32 @@ onMounted(() => {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: float 7s ease-in-out infinite 2s;
 }
 
-/* Sparkles */
-.cover-sparkle {
+/* Static corner decoration: top-left sage green semicircle */
+.corner-deco-tl {
   position: absolute;
-  background: #E8B4B8;
-  border-radius: 50%;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 40px;
+  background: #A8C5B8;
+  border-radius: 0 0 80px 80px;
+  opacity: 0.7;
   pointer-events: none;
-  animation: sparkle 3s ease-in-out infinite;
 }
 
-.cover-sparkle:nth-child(odd) {
-  background: #C5DDD2;
-}
-
-.cover-sparkle:nth-child(3n) {
-  background: #E8A68C;
+/* Static corner decoration: bottom-right coral pink blob */
+.corner-deco-br {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 100px;
+  height: 70px;
+  background: #D4918F;
+  border-radius: 60% 40% 50% 45% / 50% 60% 40% 55%;
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 /* Content */
@@ -178,16 +183,6 @@ onMounted(() => {
   font-size: var(--pop-font-size-lg);
   color: var(--pop-text-muted);
   margin-top: var(--pop-space-sm);
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-}
-
-@keyframes sparkle {
-  0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
-  50% { opacity: 0.8; transform: scale(1) rotate(180deg); }
 }
 
 @keyframes gradient-shift {

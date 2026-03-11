@@ -18,6 +18,40 @@ defaults:
 18種類のレイアウト + コンポーネントをチェック
 
 ---
+layout: profile
+image: /profile-mugi.jpg
+name: 大坪 悠
+nameEn: Yu Otsubo
+title: ソフトウェアエンジニア
+qrcode: /qrcode-portfolio.png
+qrcodeLabel: Portfolio
+transition: pop-slide
+sound: chime
+zoom: 0.8
+---
+
+### 経歴
+
+新潟県出身。2016年KDDI新卒入社。通信設備の運用、社内データ基盤構築のPM、Webチャットボット開発などを経験。スタートアップへの転職を経て2024年にKAG入社。生成AIを活用したアプリケーション開発に従事。
+
+### 著書
+
+- **K.A.G Tech Book**（KDDIアジャイル開発センター）
+- **やさしいMCP入門**（秀和システム）
+
+### SNS
+
+- <ph-twitter-logo class="text-lg" style="color: var(--pop-sage)" /> @tubone24
+- <ph-globe class="text-lg" style="color: var(--pop-sage)" /> tubone-project24.xyz
+- <ph-instagram-logo class="text-lg" style="color: var(--pop-sage)" /> [mugimugi.cutedog](https://www.instagram.com/mugimugi.cutedog/)
+
+<div class="hobby-bubble">趣味: 犬と遊ぶこと 🐕</div>
+
+### モットー
+
+「早く小さく失敗する」
+
+---
 layout: toc
 transition: pop-slide
 sound: chime

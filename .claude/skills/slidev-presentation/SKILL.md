@@ -21,7 +21,7 @@ references/template/
 ├── styles/
 │   └── index.css         # グローバルスタイル（Pop Azusaテーマ）
 ├── layouts/
-│   ├── cover.vue         # カバーページ（スパークル＋グラデーションオーブ付き）
+│   ├── cover.vue         # カバーページ（静的コーナー装飾＋グラデーションオーブ付き）
 │   ├── section.vue       # セクション区切り（カラフルグラデーション背景）
 │   ├── default.vue       # デフォルトコンテンツ
 │   ├── two-cols.vue      # 2カラムレイアウト
@@ -31,6 +31,7 @@ references/template/
 │   ├── image-right.vue   # 画像右配置
 │   ├── image-left.vue    # 画像左配置
 │   ├── end.vue           # エンドページ（ハート装飾付き）
+│   ├── profile.vue        # 自己紹介（円形写真＋2カラム）
 │   ├── toc.vue           # 目次ページ（白カード＋2カラム番号リスト）
 │   ├── testimonial.vue   # 証言/声（円形写真＋引用）
 │   ├── grid-icons.vue    # 2x2アイコングリッド（白カード）
@@ -173,6 +174,7 @@ transition: pop-slide
 | `image-right` | 画像右 | `image` |
 | `image-left` | 画像左 | `image` |
 | `end` | エンドページ | - |
+| `profile` | 自己紹介スライド | `image`, `name`, `nameEn`, `title` |
 | `toc` | 目次ページ | - |
 | `testimonial` | 証言・会員の声 | - |
 | `grid-icons` | 2x2アイコングリッド | - |
@@ -531,6 +533,7 @@ npx slidev --remote
 - **quote**: 引用や名言に使用
 - **two-cols**: 比較・対比に使用
 - **end**: 最後のスライドに必ず使用
+- **profile**: 自己紹介に使用。左に円形プロフィール画像、右にslotで経歴やスキルを自由に記述
 
 ### デザインTips
 - `<PopCard>` で情報をカード化すると見やすい。**ただし、他のコンテンツ（リストやテキスト等）の下に配置すると見切れるため、スライドの主要コンテンツとして単独で使うか、スライド上部に配置すること**

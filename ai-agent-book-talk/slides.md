@@ -15,8 +15,36 @@ defaults:
 
 生成AI深掘りガイド
 
-<!-- TODO画像: 書籍カバー画像を /public/images/book-cover.png に配置。
-     カバー画像が用意できたら layout: image-circle-right, image: /images/book-cover.png に変更 -->
+---
+layout: profile
+image: /profile-mugi.jpg
+name: 大坪 悠
+nameEn: Yu Otsubo
+title: ソフトウェアエンジニア @ KAG
+qrcode: /qrcode-portfolio.png
+qrcodeLabel: Portfolio
+transition: pop-slide
+sound: chime
+zoom: 0.8
+---
+
+### 経歴
+
+新潟県出身。2016年KDDI新卒入社。通信設備の運用、社内データ基盤構築のPM、Webチャットボット開発などを経験。スタートアップへの転職を経て2024年にKAG入社。生成AIを活用したアプリケーション(A-BOSS)開発に従事。
+
+### 著書
+
+- **AIエージェント開発運用入門**（SBクリエイティブ）
+- **やさしいMCP入門**（秀和システム）
+- **K.A.G Tech Book**（KDDIアジャイル開発センター）
+
+### SNS
+
+- <ph-twitter-logo class="text-lg" style="color: var(--pop-sage)" /> @tubone24
+- <ph-globe class="text-lg" style="color: var(--pop-sage)" /> tubone-project24.xyz
+- <ph-instagram-logo class="text-lg" style="color: var(--pop-sage)" /> [mugimugi.cutedog](https://www.instagram.com/mugimugi.cutedog/)
+
+<div class="hobby-bubble">趣味: 犬と遊ぶこと 🐕</div>
 
 ---
 layout: statement
@@ -46,7 +74,7 @@ transition: pop-fade
 transition: pop-slide
 ---
 
-# バズワード化する「AIエージェント」
+# バズワード化する<br>「AIエージェント」
 
 <v-clicks>
 
@@ -214,7 +242,7 @@ color: pink
 transition: pop-swirl
 ---
 
-# 問題は「どう作るか」
+# 問題は<br>「どう作るか」
 
 ---
 layout: statement
@@ -241,9 +269,10 @@ transition: pop-slide
 </div>
 <p style="margin-top: 0.8rem; font-size: 1.1rem;">黒い画面に白い文字…ターミナルの世界</p>
 </div>
-<div style="position: relative; width: 120px; flex-shrink: 0; align-self: flex-end;">
-  <PictogramScene scene="confused" size="small" />
 </div>
+
+<div style="position: absolute; right: 1.5rem; bottom: 2rem; width: 180px;">
+  <PictogramScene scene="confused" />
 </div>
 
 ---
@@ -265,16 +294,21 @@ transition: pop-slide
     <span style="background: #DBEAFE; color: #3B82F6; padding: 0.1rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-family: monospace;">In [1]:</span>
     <span style="font-family: monospace; font-size: 0.8rem; color: #334155;">from langchain import Agent</span>
   </div>
-  <div style="padding: 0.6rem 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
+  <div style="padding: 0.6rem 0.8rem; border-bottom: 1px solid #F1F5F9; display: flex; align-items: center; gap: 0.5rem;">
     <span style="background: #DBEAFE; color: #3B82F6; padding: 0.1rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-family: monospace;">In [2]:</span>
     <span style="font-family: monospace; font-size: 0.8rem; color: #334155;">agent.run("タスク実行")</span>
+  </div>
+  <div style="padding: 0.6rem 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
+    <span style="background: #FEF3C7; color: #D97706; padding: 0.1rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-family: monospace;">Out[2]:</span>
+    <span style="font-family: monospace; font-size: 0.8rem; color: #334155;">'タスクが完了しました'</span>
   </div>
 </div>
 <p style="margin-top: 0.8rem; font-size: 1.1rem;">Jupyter Notebookで動くエージェント</p>
 </div>
-<div style="position: relative; width: 120px; flex-shrink: 0; align-self: flex-end;">
-  <PictogramScene scene="confused" size="small" />
 </div>
+
+<div style="position: absolute; right: 1.5rem; bottom: 2rem; width: 180px;">
+  <PictogramScene scene="confused" />
 </div>
 
 ---
@@ -301,16 +335,17 @@ transition: pop-fade
 
 # AIエージェント<br>開発運用入門
 
-<!-- TODO画像: /public/images/book-cover.png（カバースライドと共通）
-     推奨: 書籍の表紙画像。高解像度（最低 800x1000px）。
-     白背景で撮影した書影、または出版社から提供される
-     公式カバー画像を使用。 -->
-
 <span style="color: var(--pop-sage); font-weight: bold;">御田稔 / 大坪悠 / 塚田真規</span>
 
 SBクリエイティブ
 
 <span class="pop-tag pop-tag-cool">生成AI深掘りガイド</span>
+
+<style>
+.slidev-layout :deep(.image-frame img) {
+  max-height: 50vh !important;
+}
+</style>
 
 ---
 layout: fact
@@ -333,7 +368,7 @@ transition: pop-bounce
 transition: pop-slide
 ---
 
-# フルスタックとは？
+# フルスタックだと？
 
 <StepList :steps="[
   'Web画面がある — ブラウザで操作できるUI',
@@ -372,19 +407,31 @@ transition: pop-slide
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
 
 <PopCard v-click color="pink" title="AWS">
-  クラウドにデプロイ
+  <div style="display: flex; align-items: center; gap: 0.5rem;">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2xQcwKitRgXfqdi34DYlocPSEXD2G2zZipg&s" style="width: 28px; height: 28px;" />
+    <span>クラウドにデプロイ</span>
+  </div>
 </PopCard>
 
 <PopCard v-click color="mint" title="Next.js">
-  WebフレームワークでUI構築
+  <div style="display: flex; align-items: center; gap: 0.5rem;">
+    <img src="https://img.icons8.com/color/1200/nextjs.jpg" style="width: 28px; height: 28px;" />
+    <span>WebフレームワークでUI構築</span>
+  </div>
 </PopCard>
 
 <PopCard v-click color="pink" title="Mastra">
-  TypeScript製AIフレームワーク
+  <div style="display: flex; align-items: center; gap: 0.5rem;">
+    <img src="https://mastra.ai/favicon/new-brand/icon-512.png" style="width: 28px; height: 28px;" />
+    <span>TypeScript製AIフレームワーク</span>
+  </div>
 </PopCard>
 
 <PopCard v-click color="mint" title="Strands Agent / LangGraph">
-  最新エージェントフレームワーク
+  <div style="display: flex; align-items: center; gap: 0.5rem;">
+    <img src="https://avatars.githubusercontent.com/u/209155962?s=280&v=4" style="width: 28px; height: 28px;" />
+    <span>最新エージェントフレームワーク</span>
+  </div>
 </PopCard>
 
 </div>
@@ -443,7 +490,7 @@ image: https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800
 transition: pop-slide
 ---
 
-# コーディングだけじゃない
+# コーディング<br>だけじゃない
 
 <div v-click class="pop-bounce-up">
 <div class="pop-card" style="padding: 1.2rem;">
@@ -469,12 +516,20 @@ transition: pop-bounce
 # AIエージェントの可能性は<br>まだまだ広がる
 
 ---
-layout: section
+layout: statement
 color: cyan
+transition: pop-slide
+---
+
+# 2025年は<br>「AIエージェント元年」<br>でした
+
+---
+layout: section
+color: green
 transition: pop-swirl
 ---
 
-# 2026年、<br>次のステップへ
+# 2026年は<br><span style="white-space: nowrap; font-weight: 900; background: linear-gradient(90deg, #FF6B6B, #FF9F43, #FECA57, #48DBFB, #FF6BCB); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: drop-shadow(0 0 2px white) drop-shadow(0 0 4px white);">AIエージェントビルダー</span><br>元年にしましょう
 
 ---
 layout: statement
@@ -490,7 +545,7 @@ color: green
 transition: pop-bounce
 ---
 
-# まずは1つ、<br>自分の手で作ってみませんか
+# まずは1つ、自分の手で<br>作ってみませんか
 
 ---
 layout: image-left
@@ -499,8 +554,6 @@ transition: pop-fade
 ---
 
 # ぜひお手に取ってください
-
-<!-- TODO画像: /public/images/book-cover.png（書籍紹介スライドと共通） -->
 
 <GradientHeading gradient="cool" tag="h3">AIエージェント開発運用入門</GradientHeading>
 
@@ -511,6 +564,12 @@ transition: pop-fade
 <span class="pop-tag pop-tag-cool">8章構成</span> <span class="pop-tag">13ハンズオン</span>
 
 <p class="text-sm" style="margin-top: 0.5rem;">ITエンジニア本大賞 2026 ベスト10</p>
+
+<style>
+.slidev-layout :deep(.image-frame img) {
+  max-height: 50vh !important;
+}
+</style>
 
 ---
 layout: end
