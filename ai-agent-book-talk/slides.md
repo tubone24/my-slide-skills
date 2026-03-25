@@ -92,7 +92,7 @@ transition: pop-slide
 
 - <ph-quotes class="text-lg" style="color: var(--pop-sage)" /> 「AIエージェントを活用しよう」
 - <ph-quotes class="text-lg" style="color: var(--pop-sage)" /> 「AIエージェントで業務効率化」
-- <ph-quotes class="text-lg" style="color: var(--pop-sage)" /> 「エージェンティックAIの時代」
+- <ph-quotes class="text-lg" style="color: var(--pop-sage)" /> 「シンギュラリティも近い！？」
 
 </v-clicks>
 
@@ -122,7 +122,7 @@ color: coral
 transition: pop-zoom
 ---
 
-# AIエージェント、<br>使えてますか？
+# AIエージェント<br>使えてますか？
 
 ---
 layout: statement
@@ -304,7 +304,7 @@ transition: pop-slide
   </div>
   <div style="padding: 0.6rem 0.8rem; border-bottom: 1px solid #F1F5F9; display: flex; align-items: center; gap: 0.5rem;">
     <span style="background: #DBEAFE; color: #3B82F6; padding: 0.1rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-family: monospace;">In [1]:</span>
-    <span style="font-family: monospace; font-size: 0.8rem; color: #334155;">from langchain import Agent</span>
+    <span style="font-family: monospace; font-size: 0.8rem; color: #334155;">from super_ai_agent import Agent</span>
   </div>
   <div style="padding: 0.6rem 0.8rem; border-bottom: 1px solid #F1F5F9; display: flex; align-items: center; gap: 0.5rem;">
     <span style="background: #DBEAFE; color: #3B82F6; padding: 0.1rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-family: monospace;">In [2]:</span>
@@ -355,7 +355,7 @@ SBクリエイティブ
 
 <style>
 .slidev-layout :deep(.image-frame img) {
-  max-height: 50vh !important;
+  max-height: 35vh !important;
 }
 </style>
 
@@ -454,28 +454,12 @@ color: cyan
 transition: pop-bounce
 ---
 
-# どの章からでも<br>ハンズオンOK
-
----
-layout: statement
-color: dark
-transition: pop-fade
----
-
 # 興味がある技術から<br>始められる
 
 ---
 layout: statement
 color: green
 transition: pop-zoom
----
-
-# 最短で動く<br>AIエージェントアプリが<br>手に入る
-
----
-layout: section
-color: green
-transition: pop-swirl
 ---
 
 # ところで…
@@ -497,6 +481,70 @@ transition: pop-zoom
 # AIエージェントで<br>作りました
 
 ---
+layout: statement
+color: dark
+transition: pop-fade
+---
+
+# ちなみに…
+
+---
+layout: statement
+color: coral
+transition: pop-bounce
+---
+
+# ITエンジニア本大賞<br>受賞は…<br>できませんでした
+
+---
+transition: pop-slide
+---
+
+# 敗因分析<br>（個人の見解）
+
+<v-clicks>
+
+- <ph-warning class="text-lg" style="color: var(--pop-rose)" /> プレゼン技術？ → <span style="opacity: 0.5; font-size: 0.9rem;">…まあそれは棚に上げて</span>
+- <ph-warning class="text-lg" style="color: var(--pop-rose)" /> 話の構成力？ → <span style="opacity: 0.5; font-size: 0.9rem;">…それも棚に上げて</span>
+- <ph-warning class="text-lg" style="color: var(--pop-rose)" /> 緊張して早口？ → <span style="opacity: 0.5; font-size: 0.9rem;">…それも棚に上げて</span>
+
+</v-clicks>
+
+<div v-click class="pop-bounce-up" style="margin-top: 1.5rem;">
+  <span style="color: var(--pop-rose); font-size: 1.4rem; font-weight: bold;">棚パンパンやないかい</span>
+</div>
+
+---
+layout: statement
+color: cyan
+transition: pop-zoom
+---
+
+# 真の敗因<br>（ということにしたい）
+
+---
+transition: pop-fade
+---
+
+# 実際に動く例を<br>プレゼンで見せられなかった
+
+<v-clicks>
+
+- <ph-book-open class="text-lg" style="color: var(--pop-sage)" /> 「本を読んでください」だけでは伝わらない
+- <ph-presentation-chart class="text-lg" style="color: var(--pop-sage)" /> 百聞は一見にしかず
+- <ph-rocket class="text-lg" style="color: var(--pop-sage)" /> **動くデモこそ最強の説得力**
+
+</v-clicks>
+
+---
+layout: statement
+color: green
+transition: pop-bounce
+---
+
+# それがこのスライド
+
+---
 layout: image-right
 image: https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800
 transition: pop-slide
@@ -516,7 +564,7 @@ transition: pop-slide
 </div>
 
 <div v-click class="pop-slide-right" style="margin-top: 0.8rem;">
-  <span style="color: var(--pop-sage); font-size: 1rem; font-weight: bold;">資料作成もAIエージェントの時代</span>
+  <span style="color: var(--pop-sage); font-size: 1rem; font-weight: bold;">キーボード打ってない</span>
 </div>
 
 ---
@@ -549,14 +597,6 @@ color: dark
 transition: pop-zoom
 ---
 
-# 「使う」から「作る」へ
-
----
-layout: statement
-color: green
-transition: pop-bounce
----
-
 # まずは1つ、自分の手で<br>作ってみませんか
 
 ---
@@ -579,7 +619,7 @@ transition: pop-fade
 
 <style>
 .slidev-layout :deep(.image-frame img) {
-  max-height: 50vh !important;
+  max-height: 35vh !important;
 }
 </style>
 
@@ -589,5 +629,3 @@ transition: pop-fade
 ---
 
 # ありがとうございました
-
-AIエージェント、一緒に「作る」時代へ
